@@ -1,0 +1,97 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+    public class BaseCharacter{
+    public Character _name;
+    public Currency_Kind mycurrency;
+    public int price;
+    public bool _isLocked;
+    public int _level;
+    public int _max_level;
+    public BaseState[] attribute_list;
+
+    public BaseCharacter(Character _name, Currency_Kind _kind, int price, int _max_level)
+    {
+        this._name = _name;
+        this.mycurrency = _kind;
+        this.price = price;
+        _isLocked = true;
+        _level = 0;
+        this._max_level = _max_level;
+        this.attribute_list = new BaseState[Enum.GetValues(typeof(Attribute)).Length];
+        AddAllAttriute(this._name, this.attribute_list);
+    }
+    private void AddAllAttriute(Character _name, BaseState[] attribute_list)
+    {
+        AttributeDateBase.GetBaseArrayByName(_name, attribute_list);
+    }
+
+
+}
+public enum Character
+{
+    Moking,
+    Super_Pig
+}
+
+//持久化英雄数组
+        public static void Load()
+{
+    Globals.Character = new BaseCharacter[Enum.GetValues(typeof(Character)).Length];
+    Debug.Log("load");
+
+    //second load
+    if (File.Exists(fileName))
+    {
+        try
+        {
+            using (FileStream fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+            {
+
+                BinaryFormatter b = new BinaryFormatter();
+                //这里貌似最好一个个序列化
+                //BaseCharacter[] gp = (BaseCharacter[])b.Deserialize(fileStream);
+                for (int i = 0; i < Globals.Character.Length; i++)
+                {
+                    Globals.Character[i] = (BaseCharacter)b.Deserialize(fileStream);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Utils.WriteLog("Globals.Save occurs an error:" + ex);
+        }
+    }
+    else
+    {
+        HeroDateBase.GetBaseArray(Globals.Character);
+    }
+
+}
+public static void Save()
+{
+    if (Globals.Character == null && Globals.Character.Length <= 0)
+    {
+        return;
+    }
+    try
+    {
+        using (FileStream fs = new FileStream(fileName, FileMode.Create, FileAccess.Write))
+        {
+            BinaryFormatter b = new BinaryFormatter();
+            //也要一个个反序列化
+            for (int i = 0; i < Globals.Character.Length; i++)
+            {
+                b.Serialize(fs, Globals.Character[i]);
+            }
+
+            Debug.Log("Serialize Save");
+        }
+    }
+    catch (Exception ex)
+    {
+        Utils.WriteLog("Globals.Save occurs an error:" + ex);
+    }
+
+}
