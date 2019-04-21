@@ -12,9 +12,9 @@ public class bginit : MonoBehaviour {
         Transform panel = camera.transform.Find("creatplayer");
 
         panel.gameObject.SetActive(false);
-        panel = camera.transform.Find("loadplayer");
+        //panel = camera.transform.Find("loadplayer");
 
-        panel.gameObject.SetActive(false);
+        //panel.gameObject.SetActive(false);
     }
 
         // Update is called once per frame

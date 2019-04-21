@@ -69,6 +69,7 @@
     <Compile Include="Assets\initpage.cs" />
     <Compile Include="Assets\inputtext.cs" />
     <Compile Include="Assets\NewBehaviourScript.cs" />
+    <Compile Include="Assets\pageinit_creatplayer.cs" />
     <Compile Include="Assets\saveplayer.cs" />
     <Compile Include="Assets\script\BaseState.cs" />
     <Compile Include="Assets\script\playerdata.cs" />
