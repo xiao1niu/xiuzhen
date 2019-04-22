@@ -88,4 +88,18 @@ public class initpage : MonoBehaviour {
         Debug.Log("-----tmp0-----" + tmp0);
         return tmp0;
     }
+    public static void Setactive(int act, GameObject obj)
+    {
+        switch (act){
+            case 0:
+                obj.gameObject.SetActive(false);
+                break;
+            case 1:
+                obj.gameObject.SetActive(true);
+                break;
+        }
+
+        
+    }
+
 }
