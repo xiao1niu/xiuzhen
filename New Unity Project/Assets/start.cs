@@ -4,19 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class start : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
+    public GameObject obj1;
+    // Use this for initialization
+    void Start () {
 		
 	}
     public void OnClick()
     {
-
-        GameObject camera = GameObject.Find("UICamera");
-
-        Transform panel = camera.transform.Find("creatplayer");
-
-        panel.gameObject.SetActive(true);
+        initpage.Setactive(1, obj1);
 
         //GameObject.Find("creatplayer").SetActive(true);
 

@@ -52,7 +52,7 @@ public class playerdata : MonoBehaviour {
         return tmp0;
     }
     [System.Serializable]
-    public class Save
+    public  class Save
     {
         public List<int> psave_shuxing = new List<int>();
         public List<int> psave_wuxing = new List<int>();
@@ -80,5 +80,23 @@ public class playerdata : MonoBehaviour {
         Debug.Log("Saving as JSON: " + json);
        // Debug.Log("Game Saved "+ save.name);
     }
+    public static Save Loadpalyer(int n)
+    {
+        if (File.Exists(Application.dataPath + "/save/save0+"+n+"+.save"))
+        {
+            Debug.Log("读取存档: save0"+n);
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/gamesave.save", FileMode.Open);
+            string json = (string)bf.Deserialize(file);
+            file.Close();
+            Save save = JsonUtility.FromJson<Save>(json);
+            return save;
+        }
+        else
+        {
+            Debug.Log("存档save0" + n+" 不存在");
+            return null;
+        }
 
+    }
 }
