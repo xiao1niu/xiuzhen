@@ -9,10 +9,28 @@ public class start : MonoBehaviour {
     void Start () {
 		
 	}
-    public void OnClick()
+    void OnClick()
+    {
+        Debug.Log("打开页面" + obj1.name);
+        initpage.Setactive(1, obj1);
+        //Debug.Log("点击有效");
+        //GameObject.Find("creatplayer").SetActive(true);
+
+    }
+    public void OnClick0()
     {
         initpage.Setactive(1, obj1);
+        //Debug.Log("点击有效");
+        //GameObject.Find("creatplayer").SetActive(true);
 
+    }
+    public void OnClick_creat()
+    {
+        GameObject camera = GameObject.Find("UICamera");
+        Transform obj = camera.transform.Find("creatplayer");
+        initpage.Setactive(1, obj.gameObject);
+        // initpage.Setactive(1, obj1);
+        //Debug.Log("点击有效");
         //GameObject.Find("creatplayer").SetActive(true);
 
     }

@@ -27,6 +27,13 @@ public class initpage : MonoBehaviour {
     {
 
     }
+    void OnEnable()
+    {
+        setlabel();
+        setdata();
+        GameObject obj = GameObject.Find("loadplayer");
+        initpage.Setactive(0, obj);
+    }
     // Update is called once per frame
     void Update () {
      
@@ -92,10 +99,12 @@ public class initpage : MonoBehaviour {
     {
         switch (act){
             case 0:
-                obj.gameObject.SetActive(false);
+                obj.gameObject.SetActive(false); 
+                Debug.Log("关闭页面" + obj.name);
                 break;
             case 1:
                 obj.gameObject.SetActive(true);
+                Debug.Log("打开页面" + obj.name);
                 break;
         }
 
