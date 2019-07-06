@@ -6,11 +6,13 @@ using UnityEngine.UI;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using static playerdata;
 //用于处理角色数据相关
 public class playerdata : MonoBehaviour {
     public static int[] p_shuxing = new int[6];
     public static int[] p_wuxing = new int[5];
     public static string p_name = "";
+    public static string f_name = "";
     // Use this for initialization
     void Start () {
 		
@@ -32,6 +34,7 @@ public class playerdata : MonoBehaviour {
         }
   
     }
+
     public static int GetNum(int num, int minValue, int maxValue, int mul)
     {
         int n = 0;
@@ -45,10 +48,10 @@ public class playerdata : MonoBehaviour {
             randnum = ra.Next(minValue, maxValue);
             tmp = tmp + randnum;
             n = n + 1;
-            Debug.Log(n + "-----tmp:" + tmp + ",randnum:" + randnum);
+            //Debug.Log(n + "-----tmp:" + tmp + ",randnum:" + randnum);
         }
         tmp0 = tmp * mul;
-        Debug.Log("-----tmp0-----" + tmp0);
+        //Debug.Log("-----tmp0-----" + tmp0);
         return tmp0;
     }
     [System.Serializable]
@@ -58,11 +61,13 @@ public class playerdata : MonoBehaviour {
         public List<int> psave_wuxing = new List<int>();
 
         public string name = "";
+        public string filename = "";
     }
     public static Save Palyerdata_save()
     {
         Save save = new Save();
         save.name = p_name;
+        save.filename = f_name;
         save.psave_shuxing = p_shuxing.ToList();
         save.psave_wuxing = p_wuxing.ToList();
         return save;
@@ -73,20 +78,30 @@ public class playerdata : MonoBehaviour {
 
         // 2
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.dataPath + "/save/"+save.name+ ".txt");
+        for (int n = 1; n < 4; n++)
+        {
+            if (!File.Exists(Application.dataPath + "/save/save0" + n + ".txt"))
+            {
+                save.filename = "save0" + n + ".txt";
+                //Debug.Log(Application.dataPath + "文件名1: " + save.filename);
+        FileStream file = File.Create(Application.dataPath + "/save/"+save.filename);
         string json=JsonUtility.ToJson(save);
         bf.Serialize(file, json);
         file.Close();
-        Debug.Log("Saving as JSON: " + json);
-       // Debug.Log("Game Saved "+ save.name);
+        //Debug.Log("Saving as JSON: " + json);
+                // Debug.Log("Game Saved "+ save.name);
+                break;
+            }
+        }
     }
-    public static Save Loadpalyer(int n)
+    public static Save Loadplayer(int n)
     {
-        if (File.Exists(Application.dataPath + "/save/save0+"+n+"+.save"))
+        if (File.Exists(Application.dataPath + "/save/save0"+n+".txt"))
         {
-            Debug.Log("读取存档: save0"+n);
+
+            //Debug.Log(Application.dataPath + "读取存档: save0" +n);
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/gamesave.save", FileMode.Open);
+            FileStream file = File.Open(Application.dataPath + "/save/save0" + n + ".txt", FileMode.Open);
             string json = (string)bf.Deserialize(file);
             file.Close();
             Save save = JsonUtility.FromJson<Save>(json);
@@ -94,7 +109,7 @@ public class playerdata : MonoBehaviour {
         }
         else
         {
-            Debug.Log("存档save0" + n+" 不存在");
+            //Debug.Log("存档save0" + n+" 不存在");
             return null;
         }
 

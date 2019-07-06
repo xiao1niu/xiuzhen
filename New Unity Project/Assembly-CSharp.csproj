@@ -60,29 +60,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\bginit.cs" />
-    <Compile Include="Assets\camerascale.cs" />
     <Compile Include="Assets\CSV.cs" />
-    <Compile Include="Assets\exit.cs" />
     <Compile Include="Assets\FileController.cs" />
-    <Compile Include="Assets\initpage.cs" />
-    <Compile Include="Assets\inputtext.cs" />
-    <Compile Include="Assets\NewBehaviourScript.cs" />
-    <Compile Include="Assets\NewBehaviourScript1.cs" />
-    <Compile Include="Assets\page_creatplayer.cs" />
-    <Compile Include="Assets\page_loadgame.cs" />
     <Compile Include="Assets\saveplayer.cs" />
     <Compile Include="Assets\script\BaseState.cs" />
+    <Compile Include="Assets\script\page_action.cs" />
+    <Compile Include="Assets\script\page_createplayer.cs" />
+    <Compile Include="Assets\script\page_home.cs" />
+    <Compile Include="Assets\script\page_loadgame.cs" />
     <Compile Include="Assets\script\playerdata.cs" />
-    <Compile Include="Assets\shuxing.cs" />
-    <Compile Include="Assets\start.cs" />
-    <Compile Include="Assets\suiji.cs" />
-    <Compile Include="Assets\suijiclick.cs" />
-    <Compile Include="Assets\winclose.cs" />
     <None Include="Assets\script\BaseCharacter.txt" />
-    <None Include="Assets\save\123111.txt" />
-    <None Include="Assets\save\ass.txt" />
-    <None Include="Assets\save\name.txt" />
+    <None Include="Assets\save\save03.txt" />
+    <None Include="Assets\save\save01.txt" />
+    <None Include="Assets\save\save02.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>I:/Gitgame/xiuzhen/New Unity Project/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

@@ -32,11 +32,11 @@ public class CSV{
         try
         {
             sr = File.OpenText(path + "//" + fileName);
-            Debug.Log("file finded");
+            //Debug.Log("file finded");
         }
         catch
         {
-            Debug.Log("file don't finded");
+            //Debug.Log("file don't finded");
             return;
         }
         string line;
