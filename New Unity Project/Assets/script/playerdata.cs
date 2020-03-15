@@ -8,20 +8,23 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using static playerdata;
 //用于处理角色数据相关
+public static playerinfo()
+{
+}
 public class playerdata : MonoBehaviour {
     public static int[] p_shuxing = new int[6];
     public static int[] p_wuxing = new int[5];
     public static string p_name = "";
     public static string f_name = "";
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    void Start() {
+
+    }
+
+// Update is called once per frame
+void Update() {
+
+    }
     public static void Randshuxing()
     {
         for (int i = 0; i < 6; i++)
@@ -32,7 +35,7 @@ public class playerdata : MonoBehaviour {
         {
             p_wuxing[i] = GetNum(3, 0, 7, 5);
         }
-  
+
     }
 
     public static int GetNum(int num, int minValue, int maxValue, int mul)
@@ -55,7 +58,7 @@ public class playerdata : MonoBehaviour {
         return tmp0;
     }
     [System.Serializable]
-    public  class Save
+    public class Save
     {
         public List<int> psave_shuxing = new List<int>();
         public List<int> psave_wuxing = new List<int>();
@@ -63,6 +66,8 @@ public class playerdata : MonoBehaviour {
         public string name = "";
         public string filename = "";
     }
+    //玩家人物数据结构
+
     public static Save Palyerdata_save()
     {
         Save save = new Save();
@@ -72,6 +77,7 @@ public class playerdata : MonoBehaviour {
         save.psave_wuxing = p_wuxing.ToList();
         return save;
     }
+
     public static void Savepalyer()
     {
         Save save = Palyerdata_save();
