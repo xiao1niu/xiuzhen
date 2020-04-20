@@ -57,7 +57,7 @@ public class page_createplayer : MonoBehaviour {
     
         Transform page = home.transform.Find("createplayer");
         Transform shuxing = page.transform.Find("shuxing/shuxingtable");
-        playerdata.Randshuxing();
+        playerdata.roledatainfo=playerdata.roledata_init(playerdata.roledatainfo);
         //GameObject.Find("creatplayer").SetActive(false)
         if (shuxing.childCount >0 ){
         shuxing.transform.Find("data_tipo").GetComponent<Text>().text = Convert.ToString(playerdata.p_shuxing[0]);
