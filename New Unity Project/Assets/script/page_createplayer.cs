@@ -3,17 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static playerdata;
 
 public class page_createplayer : MonoBehaviour {
     private GameObject gameObject;
     // Use this for initialization
     void Start () {
-        setlabel();
+        
         
     }
     void Awake()
     {
-        setdata();
+        setlabel(); 
     }
 
     void OnEnable()
@@ -23,7 +24,7 @@ public class page_createplayer : MonoBehaviour {
         Transform page_load = home.transform.Find("loadplayer");
         page_action.Setactive(0, page_load.gameObject);
         //setlabel();
-        setdata();
+        setlabel();
 
     }
     // Update is called once per frame
@@ -57,23 +58,38 @@ public class page_createplayer : MonoBehaviour {
     
         Transform page = home.transform.Find("createplayer");
         Transform shuxing = page.transform.Find("shuxing/shuxingtable");
-        playerdata.roledatainfo=playerdata.roledata_init(playerdata.roledatainfo);
+        
+        if (shuxing.childCount > 0)
+        {
+            playerdata.roledatainfo=playerdata.roledata_init(playerdata.roledatainfo);
+            Debug.Log("1:" + playerdata.roledatainfo.shuxing_basis.STR);
+            //shuxing.transform.Find("data1").GetComponent<Text>().text = "体魄";
+            shuxing.transform.Find("data1").GetComponent<Text>().text = "力量 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.STR);
+            shuxing.transform.Find("data2").GetComponent<Text>().text = "体格 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.CON);
+            shuxing.transform.Find("data3").GetComponent<Text>().text = "敏捷 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.AGI);
+            shuxing.transform.Find("data4").GetComponent<Text>().text = "灵巧 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.DEX);
+            shuxing.transform.Find("data5").GetComponent<Text>().text = "智力 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.WIS);
+            shuxing.transform.Find("data6").GetComponent<Text>().text = "精神 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.PSY);
+            shuxing.transform.Find("data7").GetComponent<Text>().text = "感知 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.PER);
+            shuxing.transform.Find("data8").GetComponent<Text>().text = "意志 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.WIL);
+            shuxing.transform.Find("data9").GetComponent<Text>().text = "魅力 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.CHA);
+        }
+        else
+        {
+            playerdata.roledatainfo = playerdata.roledata_init(playerdata.roledatainfo);
+            Debug.Log("2:" + playerdata.roledatainfo.shuxing_basis.STR);
+            addlabel("力量 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.STR), "data1", shuxing);
+            addlabel("体格 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.CON), "data2", shuxing);
+            addlabel("敏捷 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.AGI), "data3", shuxing);
+            addlabel("灵巧 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.DEX), "data4", shuxing);
+            addlabel("智力 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.WIS), "data5", shuxing);
+            addlabel("精神 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.PSY), "data6", shuxing);
+            addlabel("感知 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.PER), "data7", shuxing);
+            addlabel("意志 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.WIL), "data8", shuxing);
+            addlabel("魅力 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.CHA), "data9", shuxing);
+        }
         //GameObject.Find("creatplayer").SetActive(false)
-        if (shuxing.childCount >0 ){
-        shuxing.transform.Find("data_tipo").GetComponent<Text>().text = Convert.ToString(playerdata.p_shuxing[0]);
-        shuxing.transform.Find("data_qili").GetComponent<Text>().text = Convert.ToString(playerdata.p_shuxing[1]);
-        shuxing.transform.Find("data_shennian").GetComponent<Text>().text = Convert.ToString(playerdata.p_shuxing[2]);
-        shuxing.transform.Find("data_zhihui").GetComponent<Text>().text = Convert.ToString(playerdata.p_shuxing[3]);
-        shuxing.transform.Find("data_minjie").GetComponent<Text>().text = Convert.ToString(playerdata.p_shuxing[4]);
-        shuxing.transform.Find("data_meili").GetComponent<Text>().text = Convert.ToString(playerdata.p_shuxing[5]);
-        Transform wuxing = page.transform.Find("wuxing/wuxingtable");
-            //GameObject.Find("creatplayer").SetActive(false);
-            wuxing.transform.Find("data_jin").GetComponent<Text>().text =  Convert.ToString(playerdata.p_wuxing[0]);
-        wuxing.transform.Find("data_mu").GetComponent<Text>().text =  Convert.ToString(playerdata.p_wuxing[1]);
-        wuxing.transform.Find("data_shui").GetComponent<Text>().text =  Convert.ToString(playerdata.p_wuxing[2]);
-        wuxing.transform.Find("data_huo").GetComponent<Text>().text =  Convert.ToString(playerdata.p_wuxing[3]);
-        wuxing.transform.Find("data_tu").GetComponent<Text>().text = Convert.ToString(playerdata.p_wuxing[4]);
-      }
+
 
     }
     public void setlabel()
@@ -82,34 +98,22 @@ public class page_createplayer : MonoBehaviour {
 
         Transform panel = camera.transform.Find("createplayer");
         Transform shuxing = panel.transform.Find("shuxing/shuxingtable");
-        Transform wuxing = panel.transform.Find("wuxing/wuxingtable");
+
+        //Transform wuxing = panel.transform.Find("wuxing/wuxingtable");
         //GameObject.Find("creatplayer").SetActive(false);
-        if (shuxing.childCount==0){ 
-        addlabel("体魄", "label_tipo", shuxing);
-        addlabel("气力", "label_qili", shuxing);
-        addlabel("神念", "label_shennian", shuxing);
-        addlabel("智慧", "label_zhihui", shuxing);
-        addlabel("敏捷", "label_minjie", shuxing);
-        addlabel("魅力", "label_meili", shuxing);
-        addlabel("00", "data_tipo", shuxing);
-        addlabel("00", "data_qili", shuxing);
-        addlabel("00", "data_shennian", shuxing);
-        addlabel("00", "data_zhihui", shuxing);
-        addlabel("00", "data_minjie", shuxing);
-        addlabel("00", "data_meili", shuxing);
-        }
-        if (wuxing.childCount == 0)
+        if (shuxing.childCount ==0)
         {
-            addlabel("金", "label_jin", wuxing);
-            addlabel("木", "label_mu", wuxing);
-            addlabel("水", "label_shui", wuxing);
-            addlabel("火", "label_huo", wuxing);
-            addlabel("土", "label_tu", wuxing);
-            addlabel("00", "data_jin", wuxing);
-            addlabel("00", "data_mu", wuxing);
-            addlabel("00", "data_shui", wuxing);
-            addlabel("00", "data_huo", wuxing);
-            addlabel("00", "data_tu", wuxing);
+            playerdata.roledatainfo = playerdata.roledata_init(playerdata.roledatainfo);
+            Debug.Log("3:" + playerdata.roledatainfo.shuxing_basis.STR);
+            addlabel("力量 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.STR), "data1", shuxing);
+            addlabel("体格 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.CON), "data2", shuxing);
+            addlabel("敏捷 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.AGI), "data3", shuxing);
+            addlabel("灵巧 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.DEX), "data4", shuxing);
+            addlabel("智力 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.WIS), "data5", shuxing);
+            addlabel("精神 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.PSY), "data6", shuxing);
+            addlabel("感知 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.PER), "data7", shuxing);
+            addlabel("意志 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.WIL), "data8", shuxing);
+            addlabel("魅力 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.CHA), "data9", shuxing);
         }
         // shuxing.transform.Find("label_tipo").GetComponent<Text>().text = "体魄";
         // shuxing.transform.Find("label_qili").GetComponent<Text>().text = "气力";

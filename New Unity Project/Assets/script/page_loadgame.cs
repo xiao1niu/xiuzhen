@@ -107,8 +107,8 @@ public class page_loadgame : MonoBehaviour
     }
     public void jump_creat()
     {
-        GameObject camera = GameObject.Find("home");
-        Transform obj = camera.transform.Find("createplayer");
+        GameObject home = GameObject.Find("home");
+        Transform obj = home.transform.Find("createplayer");
         page_action.Setactive(1, obj.gameObject);
         // initpage.Setactive(1, obj1);
         //Debug.Log("点击有效");
