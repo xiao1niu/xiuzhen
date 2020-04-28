@@ -215,11 +215,14 @@ public class playerdata : MonoBehaviour {
         ra = new System.Random(unchecked((int)DateTime.Now.Ticks) * 7);
         while (i < arrnum)
         {
+            tmp = 0;
+            n = 0;
             rand = new System.Random(ra.Next(0, 100));
             while (n < num)
             {
 
-                randnum = rand.Next(minValue - 1, maxValue + 1);
+                randnum = rand.Next(minValue, maxValue + 1);
+                Debug.Log("rand：" + randnum);
                 tmp = tmp + randnum;
                 n = n + 1;
             }
