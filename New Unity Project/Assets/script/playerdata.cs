@@ -79,10 +79,15 @@ public class playerdata : MonoBehaviour {
         public float ki_max;//最大生命
         public float energy_max;//最大生命
         public float hp_injured;//受伤生命
-        public shuxing shuxing_cur;
-        public shuxing shuxing_basis;
-        public skill_work skill_work_cur;
-        public skill_work skill_work_basis;
+        public float[] shuxing_cur=new float[13];
+        public float[] shuxing_basis = new float[13];
+        public float[] skill_work_cur = new float[11];
+        public float[] skill_work_basis = new float[11];
+        public float[] skill_work_cur = new float[11];
+        public float[] skill_work_basis = new float[11];
+
+
+
         public skill_culture skill_culture_cur;
         public skill_culture skill_culture_basis;
         public skill_fight skill_fight_cur;
