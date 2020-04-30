@@ -71,6 +71,7 @@
      <Compile Include="Assets\script\page_loadgame.cs" />
      <Compile Include="Assets\script\playerdata.cs" />
      <None Include="Assets\script\BaseCharacter.txt" />
+     <None Include="Assets\config\工具\excel2json\txt.txt" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>D:/gitgame/xiuzhen/New Unity Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
@@ -313,6 +314,36 @@
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
  <HintPath>D:/gitgame/xiuzhen/New Unity Project/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
+ </Reference>
+ <Reference Include="Newtonsoft.Json">
+ <HintPath>D:/gitgame/xiuzhen/New Unity Project/Assets/config/工具/excel2json/Newtonsoft.Json.dll</HintPath>
+ </Reference>
+ <Reference Include="ExcelDataReader.DataSet">
+ <HintPath>D:/gitgame/xiuzhen/New Unity Project/Assets/config/工具/Release/ExcelDataReader.DataSet.dll</HintPath>
+ </Reference>
+ <Reference Include="ICSharpCode.SharpZipLib">
+ <HintPath>D:/gitgame/xiuzhen/New Unity Project/Assets/config/工具/Release/ICSharpCode.SharpZipLib.dll</HintPath>
+ </Reference>
+ <Reference Include="CommandLine">
+ <HintPath>D:/gitgame/xiuzhen/New Unity Project/Assets/config/工具/excel2json/CommandLine.dll</HintPath>
+ </Reference>
+ <Reference Include="ExcelDataReader">
+ <HintPath>D:/gitgame/xiuzhen/New Unity Project/Assets/config/工具/Release/ExcelDataReader.dll</HintPath>
+ </Reference>
+ <Reference Include="Excel">
+ <HintPath>D:/gitgame/xiuzhen/New Unity Project/Assets/config/工具/excel2json/Excel.dll</HintPath>
+ </Reference>
+ <Reference Include="CommandLine">
+ <HintPath>D:/gitgame/xiuzhen/New Unity Project/Assets/config/工具/Release/CommandLine.dll</HintPath>
+ </Reference>
+ <Reference Include="Newtonsoft.Json">
+ <HintPath>D:/gitgame/xiuzhen/New Unity Project/Assets/config/工具/Release/Newtonsoft.Json.dll</HintPath>
+ </Reference>
+ <Reference Include="FastColoredTextBox">
+ <HintPath>D:/gitgame/xiuzhen/New Unity Project/Assets/config/工具/Release/FastColoredTextBox.dll</HintPath>
+ </Reference>
+ <Reference Include="ICSharpCode.SharpZipLib">
+ <HintPath>D:/gitgame/xiuzhen/New Unity Project/Assets/config/工具/excel2json/ICSharpCode.SharpZipLib.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

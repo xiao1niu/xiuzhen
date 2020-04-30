@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using static playerdata;
+using static Config_Roledata;
 //用于处理角色数据相关
 
 public class playerdata : MonoBehaviour {
@@ -271,6 +272,48 @@ public class playerdata : MonoBehaviour {
             Debug.Log("存档:" + filePath + " 不存在");
             return null;
         }
+
+    }
+    public static void Loadconfig()
+    {
+        string filePath = Application.dataPath + "/config/roledata.json";
+
+        if (File.Exists(filePath))
+        {
+            //Debug.Log(Application.dataPath + "读取存档: save0" +n);
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(filePath, FileMode.Open);
+            string json = (string)bf.Deserialize(file);
+            file.Close();
+            Config_Roledata config_roledata = JsonUtility.FromJson<Config_Roledata>(json);
+            Debug.Log(config_roledata);
+            return config_roledata;
+
+        }
+        else
+        {
+            Debug.Log( filePath + " 不存在");
+            return null;
+        }
+
+    }
+
+    public static string SerializeDictionaryToJsonString<TKey, TValue>(Dictionary<TKey, TValue> dict)
+    {
+        if (dict.Count == 0)
+            return "";
+
+        string jsonStr = JsonConvert.SerializeObject(dict);
+        return jsonStr;
+    }
+    public static Dictionary<TKey, TValue> DeserializeStringToDictionary<TKey, TValue>(string jsonStr)
+    {
+        if (string.IsNullOrEmpty(jsonStr))
+            return new Dictionary<TKey, TValue>();
+
+        Dictionary<TKey, TValue> jsonDict = JsonConvert.DeserializeObject<Dictionary<TKey, TValue>>(jsonStr);
+
+        return jsonDict;
 
     }
 }
