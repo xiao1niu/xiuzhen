@@ -14,6 +14,7 @@ public class page_createplayer : MonoBehaviour {
     }
     void Awake()
     {
+        playerdata.roledatainfo = playerdata.roledata_init(playerdata.roledatainfo);
         shuxing_setlabel();
         skill_setlabel();
     }
@@ -25,8 +26,8 @@ public class page_createplayer : MonoBehaviour {
         Transform page_load = home.transform.Find("loadplayer");
         page_action.Setactive(0, page_load.gameObject);
         //setlabel();
-        shuxing_setlabel();
-        skill_setlabel();
+        //shuxing_setlabel();
+        //skill_setlabel();
 
     }
     // Update is called once per frame
@@ -63,32 +64,22 @@ public class page_createplayer : MonoBehaviour {
         
         if (shuxing.childCount > 0)
         {
-            playerdata.roledatainfo=playerdata.roledata_init(playerdata.roledatainfo);
-            Debug.Log("1:" + playerdata.roledatainfo.shuxing_basis.STR);
+            //playerdata.roledatainfo.shuxing_basis=playerdata.shuxing_init(playerdata.roledatainfo);
+            //Debug.Log("1:" + playerdata.roledatainfo.shuxing_basis.STR);
             //shuxing.transform.Find("data1").GetComponent<Text>().text = "体魄";
-            shuxing.transform.Find("data1").GetComponent<Text>().text = "力量 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.STR);
-            shuxing.transform.Find("data2").GetComponent<Text>().text = "体格 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.CON);
-            shuxing.transform.Find("data3").GetComponent<Text>().text = "敏捷 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.AGI);
-            shuxing.transform.Find("data4").GetComponent<Text>().text = "灵巧 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.DEX);
-            shuxing.transform.Find("data5").GetComponent<Text>().text = "智力 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.WIS);
-            shuxing.transform.Find("data6").GetComponent<Text>().text = "精神 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.PSY);
-            shuxing.transform.Find("data7").GetComponent<Text>().text = "感知 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.PER);
-            shuxing.transform.Find("data8").GetComponent<Text>().text = "意志 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.WIL);
-            shuxing.transform.Find("data9").GetComponent<Text>().text = "魅力 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.CHA);
-        }
+            for (int i = 0; i < 13; i = i + 1)
+            {
+                shuxing.transform.Find("data"+i).GetComponent<Text>().text = "力量 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]);
+            }
+    }
         else
         {
-            playerdata.roledatainfo = playerdata.roledata_init(playerdata.roledatainfo);
-            Debug.Log("2:" + playerdata.roledatainfo.shuxing_basis.STR);
-            addlabel("力量 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.STR), "data1", shuxing);
-            addlabel("体格 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.CON), "data2", shuxing);
-            addlabel("敏捷 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.AGI), "data3", shuxing);
-            addlabel("灵巧 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.DEX), "data4", shuxing);
-            addlabel("智力 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.WIS), "data5", shuxing);
-            addlabel("精神 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.PSY), "data6", shuxing);
-            addlabel("感知 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.PER), "data7", shuxing);
-            addlabel("意志 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.WIL), "data8", shuxing);
-            addlabel("魅力 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.CHA), "data9", shuxing);
+            //playerdata.roledatainfo = playerdata.roledata_init();
+            for (int i = 0; i < 13; i = i + 1)
+            {
+                addlabel("力量 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]), "data"+i, shuxing);
+
+            }
         }
         //GameObject.Find("creatplayer").SetActive(false)
 
@@ -105,25 +96,13 @@ public class page_createplayer : MonoBehaviour {
         //GameObject.Find("creatplayer").SetActive(false);
         if (shuxing.childCount ==0)
         {
-            playerdata.roledatainfo = playerdata.roledata_init(playerdata.roledatainfo);
-            Debug.Log("3:" + playerdata.roledatainfo.shuxing_basis.STR);
-            addlabel("力量 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.STR), "data1", shuxing);
-            addlabel("体格 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.CON), "data2", shuxing);
-            addlabel("敏捷 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.AGI), "data3", shuxing);
-            addlabel("灵巧 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.DEX), "data4", shuxing);
-            addlabel("智力 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.WIS), "data5", shuxing);
-            addlabel("精神 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.PSY), "data6", shuxing);
-            addlabel("感知 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.PER), "data7", shuxing);
-            addlabel("意志 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.WIL), "data8", shuxing);
-            addlabel("魅力 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis.CHA), "data9", shuxing);
-        }
-        // shuxing.transform.Find("label_tipo").GetComponent<Text>().text = "体魄";
-        // shuxing.transform.Find("label_qili").GetComponent<Text>().text = "气力";
-        //shuxing.transform.Find("label_shennian").GetComponent<Text>().text = "神念";
-        //shuxing.transform.Find("label_zhihui").GetComponent<Text>().text = "智慧";
-        //shuxing.transform.Find("label_minjie").GetComponent<Text>().text = "敏捷"; 
-        //shuxing.transform.Find("label_meili").GetComponent<Text>().text = "魅力";
+            //playerdata.roledatainfo = playerdata.roledata_init();
+            for (int i = 0; i < 13; i = i + 1)
+            {
+                addlabel("力量 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]), "data" + i, shuxing);
 
+            }
+        }
     }
     public static void skill_setdata()
     {
@@ -134,36 +113,24 @@ public class page_createplayer : MonoBehaviour {
 
         if (shuxing.childCount > 0)
         {
-            playerdata.roledatainfo = playerdata.roledata_init(playerdata.roledatainfo);
+            //playerdata.roledatainfo = playerdata.roledata_init();
             //Debug.Log("1:" + playerdata.roledatainfo.shuxing_basis.STR);
             //shuxing.transform.Find("data1").GetComponent<Text>().text = "体魄";
-            shuxing.transform.Find("data1").GetComponent<Text>().text = "耕作 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.gengzuo);
-            shuxing.transform.Find("data2").GetComponent<Text>().text = "厨艺 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.chuyi);
-            shuxing.transform.Find("data3").GetComponent<Text>().text = "探索 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.tansuo);
-            shuxing.transform.Find("data4").GetComponent<Text>().text = "生存 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.shengcun);
-            shuxing.transform.Find("data5").GetComponent<Text>().text = "缝纫 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.fengren);
-            shuxing.transform.Find("data6").GetComponent<Text>().text = "锻造 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.duanzao);
-            shuxing.transform.Find("data7").GetComponent<Text>().text = "木工 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.mugong);
-            shuxing.transform.Find("data8").GetComponent<Text>().text = "石工 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.shigong);
-            shuxing.transform.Find("data9").GetComponent<Text>().text = "医药 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.yiyao);
-            shuxing.transform.Find("data10").GetComponent<Text>().text = "园艺 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.jianzhu);
-            shuxing.transform.Find("data11").GetComponent<Text>().text = "建筑 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.yuanyi);
+            for (int i = 0; i < 11; i = i + 1)
+            {
+                shuxing.transform.Find("data"+i).GetComponent<Text>().text = "耕作 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis[i]);
+
+            }
         }
         else
         {
-            playerdata.roledatainfo = playerdata.roledata_init(playerdata.roledatainfo);
-            //Debug.Log("2:" + playerdata.roledatainfo.skill_work_basis.STR);
-            addlabel("耕作 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.gengzuo), "data1", shuxing);
-            addlabel("厨艺 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.chuyi), "data2", shuxing);
-            addlabel("探索 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.tansuo), "data3", shuxing);
-            addlabel("生存 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.shengcun), "data4", shuxing);
-            addlabel("缝纫 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.fengren), "data5", shuxing);
-            addlabel("锻造 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.duanzao), "data6", shuxing);
-            addlabel("木工 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.mugong), "data7", shuxing);
-            addlabel("石工 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.shigong), "data8", shuxing);
-            addlabel("医药 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.yiyao), "data9", shuxing);
-            addlabel("园艺 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.jianzhu), "data10", shuxing);
-            addlabel("建筑 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.yuanyi), "data11", shuxing);
+            //playerdata.roledatainfo = playerdata.roledata_init();
+            for (int i = 0; i < 11; i = i + 1)
+            {
+                addlabel("耕作 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis[i]), "data"+i, shuxing);
+
+            }
+           
         }
         //GameObject.Find("creatplayer").SetActive(false)
 
@@ -180,26 +147,14 @@ public class page_createplayer : MonoBehaviour {
         //GameObject.Find("creatplayer").SetActive(false);
         if (shuxing.childCount == 0)
         {
-            playerdata.roledatainfo = playerdata.roledata_init(playerdata.roledatainfo);
+            //playerdata.roledatainfo = playerdata.roledata_init();
             //Debug.Log("3:" + playerdata.roledatainfo.skill_work_basis.STR);
-            addlabel("耕作 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.gengzuo), "data1", shuxing);
-            addlabel("厨艺 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.chuyi), "data2", shuxing);
-            addlabel("探索 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.tansuo), "data3", shuxing);
-            addlabel("生存 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.shengcun), "data4", shuxing);
-            addlabel("缝纫 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.fengren), "data5", shuxing);
-            addlabel("锻造 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.duanzao), "data6", shuxing);
-            addlabel("木工 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.mugong), "data7", shuxing);
-            addlabel("石工 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.shigong), "data8", shuxing);
-            addlabel("医药 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.yiyao), "data9", shuxing);
-            addlabel("园艺 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.jianzhu), "data10", shuxing);
-            addlabel("建筑 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis.yuanyi), "data11", shuxing);
+            for (int i = 0; i < 11; i = i + 1)
+            {
+                addlabel("耕作 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis[i]), "data" + i, shuxing);
+
+            }
         }
-        // shuxing.transform.Find("label_tipo").GetComponent<Text>().text = "体魄";
-        // shuxing.transform.Find("label_qili").GetComponent<Text>().text = "气力";
-        //shuxing.transform.Find("label_shennian").GetComponent<Text>().text = "神念";
-        //shuxing.transform.Find("label_zhihui").GetComponent<Text>().text = "智慧";
-        //shuxing.transform.Find("label_minjie").GetComponent<Text>().text = "敏捷"; 
-        //shuxing.transform.Find("label_meili").GetComponent<Text>().text = "魅力";
 
     }
     private String GetNum(int num,int minValue, int maxValue, int mul)
@@ -222,6 +177,7 @@ public class page_createplayer : MonoBehaviour {
     }
     public void suiji()
     {
+        playerdata.roledatainfo = playerdata.roledata_init(playerdata.roledatainfo);
         shuxing_setdata();
         skill_setdata();
     }

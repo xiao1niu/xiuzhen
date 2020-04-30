@@ -79,19 +79,20 @@ public class playerdata : MonoBehaviour {
         public float ki_max;//最大生命
         public float energy_max;//最大生命
         public float hp_injured;//受伤生命
-        public float[] shuxing_cur=new float[13];
-        public float[] shuxing_basis = new float[13];
-        public float[] skill_work_cur = new float[11];
-        public float[] skill_work_basis = new float[11];
-        public float[] skill_work_cur = new float[11];
-        public float[] skill_work_basis = new float[11];
+        public float[] shuxing_cur;
+        public float[] shuxing_basis;
+        public float[] skill_work_cur;
+        public float[] skill_work_basis ;
+        public float[] skill_culture_cur ;
+        public float[] skill_culture_basis ;
+        public float[] skill_fight_cur ;
+        public float[] skill_fight_basis ;
 
 
-
-        public skill_culture skill_culture_cur;
-        public skill_culture skill_culture_basis;
-        public skill_fight skill_fight_cur;
-        public skill_fight skill_fight_basis;
+        //public skill_culture skill_culture_cur;
+        //public skill_culture skill_culture_basis;
+        //public skill_fight skill_fight_cur;
+        //public skill_fight skill_fight_basis;
     }
     //public static int[] p_shuxing = new int[6];
     //public static int[] p_wuxing = new int[5];
@@ -118,103 +119,71 @@ public class playerdata : MonoBehaviour {
         roledatainfo.hp_cur= roledatainfo.hp_max;//当前生命
         roledatainfo.ki_cur= roledatainfo.ki_max;//当前生命
         roledatainfo.energy_cur= roledatainfo.energy_max;//当前生命
-        roledatainfo.shuxing_basis = shuxing_init(roledatainfo.shuxing_basis);
+        roledatainfo = data_init("shuxing", roledatainfo);
         roledatainfo.shuxing_cur=roledatainfo.shuxing_basis;
-        roledatainfo.skill_work_basis=skill_work_init(roledatainfo.skill_work_basis);
+        roledatainfo = data_init("skill_work", roledatainfo);
         roledatainfo.skill_work_cur = roledatainfo.skill_work_basis;
-        roledatainfo.skill_culture_basis=skill_culture_init(roledatainfo.skill_culture_basis);
+        roledatainfo= data_init("skill_culture", roledatainfo);
         roledatainfo.skill_culture_cur = roledatainfo.skill_culture_basis;
-        roledatainfo.skill_fight_basis=skill_fight_init(roledatainfo.skill_fight_basis);
+        roledatainfo= data_init("skill_fight", roledatainfo);
         roledatainfo.skill_fight_cur = roledatainfo.skill_fight_basis;
         return roledatainfo;
     }
-    public static shuxing shuxing_init(shuxing roledata)
+    public static roledata data_init(string type, roledata roledatainfo)
     {
-        int[] attributie_basis = new int[10];
-        int[] attributie_hide = new int[5];
-        //随机基础属性
+        switch(type){
+            case "shuxing":
+                float[] shuxing = new float[13];
+                //int[] attributie_hide = new int[5];
+                //随机基础属性
 
-            attributie_basis= GetNum(2, 1,6, 10, attributie_basis);
+                shuxing = GetNum(2, 1, 6, 10, shuxing);
 
-        //随机隐藏属性
+                for (int i = 10; i < 13; i = i + 1)
+                {
+                    shuxing[i] = 0;
+                }
+                roledatainfo.shuxing_basis = shuxing;
+                break;
+            case "skill_work":
+                float[] skill_work = new float[11];
+                skill_work = GetNum(2, 1, 10, 4, skill_work);
+                for (int i = 4; i < 11; i = i + 1)
+                {
+                    skill_work[i] = 0;
+                }
+                roledatainfo.skill_work_basis = skill_work;
+                break;
+            case "skill_culture":
+                float[] skill_culture = new float[9];
+                for (int i = 0; i < 9; i = i + 1)
+                {
+                    skill_culture[i] = 0;
+                }
+                roledatainfo.skill_culture_basis = skill_culture;
+                break;
+            case "skill_fight":
+                float[] skill_fight = new float[12];
 
-            attributie_hide = GetNum(2, 0, 3, 5, attributie_hide);
-        
-        Debug.Log(attributie_basis[0]+","+ attributie_basis[2]+ "," + attributie_basis[3]+ "," + attributie_basis[4]);
-            roledata.STR = attributie_basis[0];//力量
-            Debug.Log("力量："+ roledata.STR);
-            roledata.DEX = attributie_basis[1];//灵巧
-            Debug.Log("灵巧：" + roledata.DEX);
-        roledata.AGI = attributie_basis[2]; //敏捷
-            roledata.VIT = attributie_basis[3]; //耐力
-            roledata.WIS = attributie_basis[4]; //智力
-            roledata.CON = attributie_basis[5]; //体质
-            roledata.PER = attributie_basis[6];//感知
-            roledata.PSY = attributie_basis[7];//精神
-            roledata.WIL = attributie_basis[8];//意志HUIGEN
-            roledata.CHA = attributie_basis[9];//魅力
-            roledata.FUYUAN = attributie_hide[0]; //福缘
-            roledata.HUIGEN = attributie_hide[1]; //慧根
-            roledata.GENGU = attributie_hide[2]; //根骨
-        return (roledata);
+                for (int i = 0; i < 12; i = i + 1)
+                {
+                    skill_fight[i] = 0;
+                }
+                roledatainfo.skill_fight_basis = skill_fight;
+                break;
+                
+        }
+        return roledatainfo;
     }
-    public static skill_work skill_work_init(skill_work roledata)
-    {
-        int[] attributie_basis = new int[4];
-        //随机基础属性
 
-            attributie_basis = GetNum(2, 1, 10,4, attributie_basis);
-   
-        //随机隐藏属性
-        roledata.gengzuo = attributie_basis[0]; ;//耕作
-        roledata.chuyi = attributie_basis[0]; ;//厨艺
-        roledata.tansuo= attributie_basis[0];//探索
-        roledata.shengcun= attributie_basis[0];//生存 
-        roledata.fengren= 0;//缝纫 需要训练
-        roledata.duanzao= 0;//锻造 需要训练
-        roledata.mugong= 0;//木工 需要训练
-        roledata.shigong= 0;//石工 需要训练
-        roledata.yiyao= 0;//医药 需要训练
-        roledata.jianzhu= 0;//建筑 需要训练
-        roledata.yuanyi= 0;//园艺 需要训练
-        return (roledata);
-    }
-    public static skill_culture skill_culture_init(skill_culture roledata)
-    {
-        roledata.danqing= 0;//丹青 需要训练
-        roledata.shishu= 0;//诗书 需要训练
-        roledata.yinlv= 0;//音律 需要训练
-        roledata.shushu= 0;//术数 需要训练
-        roledata.yiqi= 0;//弈棋 需要训练
-        roledata.daofa= 0;//道法 需要训练
-        roledata.fofa= 0;//佛学 需要训练
-        roledata.zaxue= 0;//杂学 需要训练
-        roledata.chayi= 0;//茶艺 需要训练
-        return (roledata);
-    }
-    public static skill_fight skill_fight_init(skill_fight roledata)
-    {
-        roledata.jianfa= 0;//剑法 需要训练
-        roledata.daofa= 0;//刀法 需要训练
-        roledata.anqi= 0;//暗器 需要训练
-        roledata.changbing= 0;//长兵 需要训练
-        roledata.duanbing= 0;//短兵 需要训练
-        roledata.roubo= 0;//肉搏 需要训练
-        roledata.jianshu= 0;//箭术 需要训练
-        roledata.shenfa= 0;//身法 需要训练
-        roledata.qimen= 0;//奇门 需要训练
-        roledata.qishu= 0;//骑术 需要训练
-        roledata.qinggong= 0;//轻功 需要训练
-        roledata.neigong= 0;//内功 需要训练
-        return (roledata);
-    }
+
     //返回随机值，随机次数：num，随机范围： [minValue,maxValue]，放大系数
-    public static int[] GetNum(int num, int minValue, int maxValue,int arrnum,int[] arr)
+    public static float[] GetNum(int num, int minValue, int maxValue,int arrnum,float[] arr)
     {
         int n = 0;
         int i = 0;
-        int tmp = 0;
-        int randnum = 0;
+        float tmp = 0;
+        float randnum = 0;
         System.Random ra;
         System.Random rand;
         ra = new System.Random(unchecked((int)DateTime.Now.Ticks) * 7);
