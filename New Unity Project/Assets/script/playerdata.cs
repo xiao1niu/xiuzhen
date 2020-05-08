@@ -9,7 +9,8 @@ using System.IO;
 using static playerdata;
 using static Config_Roledata;
 using Newtonsoft.Json;
-using System.Web.Script.Serialization;  //引用序列化类库
+using System.Web.Script.Serialization;
+//using System.Web.Script.Serialization;  //引用序列化类库
 //用于处理角色数据相关
 
 public class playerdata : MonoBehaviour {
