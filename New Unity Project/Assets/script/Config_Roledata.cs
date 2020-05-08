@@ -7,7 +7,7 @@ public class Config_Roledata : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
-    public int roledata_id { get; set; }
+    //public int roledata_id { get; set; }
     /// <summary>
     /// 
     /// </summary>

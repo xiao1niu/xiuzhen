@@ -8,6 +8,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using static playerdata;
 using static Config_Roledata;
+using Newtonsoft.Json;
+using System.Web.Script.Serialization;  //引用序列化类库
 //用于处理角色数据相关
 
 public class playerdata : MonoBehaviour {
@@ -174,7 +176,9 @@ public class playerdata : MonoBehaviour {
                 break;
                 
         }
+        Loadconfig();
         return roledatainfo;
+
     }
 
 
@@ -265,6 +269,7 @@ public class playerdata : MonoBehaviour {
             file.Close();
             Save save = JsonUtility.FromJson<Save>(json);
             save.savetime = File.GetLastWriteTime(filePath).ToString();
+            
             return save;
         }
         else
@@ -277,6 +282,7 @@ public class playerdata : MonoBehaviour {
     public static void Loadconfig()
     {
         string filePath = Application.dataPath + "/config/roledata.json";
+        var serializer = new JavaScriptSerializer();
 
         if (File.Exists(filePath))
         {
@@ -285,15 +291,24 @@ public class playerdata : MonoBehaviour {
             FileStream file = File.Open(filePath, FileMode.Open);
             string json = (string)bf.Deserialize(file);
             file.Close();
-            Config_Roledata config_roledata = JsonUtility.FromJson<Config_Roledata>(json);
-            Debug.Log(config_roledata);
-            return config_roledata;
+            string jsonline = serializer.Deserialize<string>(json);
+            //Dictionary<int, Config_Roledata> dic2 = JsonConvert.DeserializeObject<Dictionary<int, Config_Roledata>>(json);
+
+            /**
+            foreach (var item in dic2)
+            {
+                Console.WriteLine($"{item.Key}---->{item.Value}");
+            }
+    */
+            //Config_Roledata config_roledata = JsonUtility.FromJson<Config_Roledata>(json);
+            Debug.Log(jsonline);
+            //return config_roledata;
 
         }
         else
         {
             Debug.Log( filePath + " 不存在");
-            return null;
+            //return null;
         }
 
     }
