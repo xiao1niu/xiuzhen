@@ -10,6 +10,7 @@ using static playerdata;
 using static Config_Roledata;
 using Newtonsoft.Json;
 using System.Web.Script.Serialization;
+using Newtonsoft.Json.Linq;
 //using System.Web.Script.Serialization;  //引用序列化类库
 //用于处理角色数据相关
 
@@ -284,15 +285,25 @@ public class playerdata : MonoBehaviour {
     {
         string filePath = Application.dataPath + "/config/roledata.json";
         var serializer = new JavaScriptSerializer();
-
+        JObject o;
         if (File.Exists(filePath))
         {
             //Debug.Log(Application.dataPath + "读取存档: save0" +n);
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(filePath, FileMode.Open);
-            string json = (string)bf.Deserialize(file);
-            file.Close();
-            string jsonline = serializer.Deserialize<string>(json);
+            //BinaryFormatter bf = new BinaryFormatter();
+            //FileStream file = File.Open(filePath, FileMode.Open);
+            //string json = (string)bf.Deserialize(file);
+            using (System.IO.StreamReader file = System.IO.File.OpenText(filePath))
+            {
+                using (JsonTextReader reader = new JsonTextReader(file))
+                {
+                    o = (JObject)JToken.ReadFrom(reader);
+                    //var json = o[key].ToString();
+                    
+                }
+            }
+            Debug.Log(o);
+            //file.Close();
+            //string jsonline = serializer.Deserialize<string>(json);
             //Dictionary<int, Config_Roledata> dic2 = JsonConvert.DeserializeObject<Dictionary<int, Config_Roledata>>(json);
 
             /**
@@ -302,7 +313,7 @@ public class playerdata : MonoBehaviour {
             }
     */
             //Config_Roledata config_roledata = JsonUtility.FromJson<Config_Roledata>(json);
-            Debug.Log(jsonline);
+            //Debug.Log(jsonline);
             //return config_roledata;
 
         }
