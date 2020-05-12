@@ -203,7 +203,7 @@ public class playerdata : MonoBehaviour {
             {
 
                 randnum = rand.Next(minValue, maxValue + 1);
-                Debug.Log("rand：" + randnum);
+                //Debug.Log("rand：" + randnum);
                 tmp = tmp + randnum;
                 n = n + 1;
             }
@@ -283,6 +283,9 @@ public class playerdata : MonoBehaviour {
     }
     public static void Loadconfig()
     {
+        string role_name = SD_Roledata.Role_Dic["103"].roledata_type;
+        Debug.Log(role_name);
+        /**
         string filePath = Application.dataPath + "/config/roledata.json";
         var serializer = new JavaScriptSerializer();
         JObject o;
@@ -306,22 +309,22 @@ public class playerdata : MonoBehaviour {
             //string jsonline = serializer.Deserialize<string>(json);
             //Dictionary<int, Config_Roledata> dic2 = JsonConvert.DeserializeObject<Dictionary<int, Config_Roledata>>(json);
 
-            /**
+            
             foreach (var item in dic2)
             {
                 Console.WriteLine($"{item.Key}---->{item.Value}");
             }
-    */
-            //Config_Roledata config_roledata = JsonUtility.FromJson<Config_Roledata>(json);
-            //Debug.Log(jsonline);
-            //return config_roledata;
+  
+        //Config_Roledata config_roledata = JsonUtility.FromJson<Config_Roledata>(json);
+        //Debug.Log(jsonline);
+        //return config_roledata;
 
-        }
+    }
         else
         {
             Debug.Log( filePath + " 不存在");
             //return null;
-        }
+        }  */
 
     }
 
