@@ -310,6 +310,9 @@
     <Reference Include="ajax">
       <HintPath>D:/gitgame/xiuzhen/New Unity Project/Assets/Plugins/BaseInfolibrary/ajax.dll</HintPath>
     </Reference>
+    <Reference Include="LitJson">
+      <HintPath>D:/gitgame/xiuzhen/New Unity Project/Assets/Plugins/BaseInfolibrary/LitJson.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>D:/gitgame/xiuzhen/New Unity Project/Assets/Plugins/BaseInfolibrary/Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -327,9 +330,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>D:/gitgame/xiuzhen/New Unity Project/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="LitJson">
-      <HintPath>D:/gitgame/xiuzhen/New Unity Project/Assets/Plugins/BaseInfolibrary/LitJson.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
