@@ -68,7 +68,6 @@
     <Compile Include="Assets\mapcreater.cs" />
     <Compile Include="Assets\saveplayer.cs" />
     <Compile Include="Assets\script\BaseState.cs" />
-    <Compile Include="Assets\script\Class1.cs" />
     <Compile Include="Assets\script\Config_Roledata.cs" />
     <Compile Include="Assets\script\JsonReader.cs" />
     <Compile Include="Assets\script\MapManager.cs" />
