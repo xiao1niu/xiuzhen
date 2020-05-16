@@ -6,14 +6,18 @@ public static class JsonReader
 {
 
     //读取json数据，根据id查找（表格里的第一行），返回id和类对象互相对应的字典。
-    public static Dictionary<string, T> ReadJson<T>(string fileName)
+    public static Dictionary<int, T> ReadJson<T>(string fileName)
     {
-        TextAsset ta = Resources.Load(fileName) as TextAsset;
-        if (ta.text == null) {
+        TextAsset jsonData = Resources.Load(fileName) as TextAsset;
+        if (jsonData.text == null) {
             Debug.Log("根据路径未找到对应表格数据");
-        };
-        Dictionary<string, T> d = JsonMapper.ToObject<Dictionary<string, T>>(ta.text);
-        return d;
+            return null;
+        }
+        else{
+            Dictionary<int, T> d = JsonMapper.ToObject<Dictionary<int, T>>(jsonData.text);
+            return d;
+        }
+
     }
 
     //写入json数据，传入类类型变量。
