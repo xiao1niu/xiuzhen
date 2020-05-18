@@ -285,6 +285,9 @@ public class playerdata : MonoBehaviour {
     }
     public static void Loadconfig()
     {
+        Configinit config = new Configinit();
+        Debug.Log(config.Config_Roledata[103].roledata_name);
+        //config.init();
         //string role_name = SD_Roledata.Role_Dic["103"].roledata_type;
         //Debug.Log(role_name);
 
@@ -299,24 +302,25 @@ public class playerdata : MonoBehaviour {
         //string json = (string)bf.Deserialize(file);
         //using (System.IO.StreamReader file = System.IO.File.OpenText("config/roledata"))
         //{
-        TextAsset jsonData = Resources.Load<TextAsset>("config/roledata");
+        //TextAsset jsonData = Resources.Load<TextAsset>("config/roledata");
         //Debug.Log(jsonData.text);
 
         //JsonData data = JsonMapper.ToObject(jsonData.text);
         //Debug.Log(data["roledata_id"]);
         //Debug.Log(data["gameinfo"]);
-        SD_Roledata l = JsonMapper.ToObject<SD_Roledata>(jsonData.text);a
+        // SD_Roledata l = JsonMapper.ToObject<SD_Roledata>(jsonData.text);
         //SD_Roledata_d config_s = new SD_Roledata_d();
         //config_s.Config_Roledata = l.gameinfo.ToDictionary(key => key.roledata_id, value => value); 
         //o = (JObject)JToken.ReadFrom(reader);
         //var json = o[key].ToString();
         //Debug.Log(d.cr_List.Count); 
+        /*
         foreach (var info in l.gameinfo)
                 {
                     Debug.Log(info.Key + " " + info.Value.roledata_name);
                 }
         Debug.Log(l.gameinfo.Config_Roledata[103].roledata_name);
-
+        */
         // }
 
         //Debug.Log(o);
@@ -346,6 +350,6 @@ public class playerdata : MonoBehaviour {
     }
 
 
-  
+
 }
 
