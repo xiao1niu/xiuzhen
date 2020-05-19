@@ -69,7 +69,7 @@ public class page_createplayer : MonoBehaviour {
             //shuxing.transform.Find("data1").GetComponent<Text>().text = "体魄";
             for (int i = 0; i < 13; i = i + 1)
             {
-                shuxing.transform.Find("data"+i).GetComponent<Text>().text = "力量 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]);
+                shuxing.transform.Find("data"+i).GetComponent<Text>().text = Configinit.Config_Roledata[100+i].roledata_name + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]);
             }
     }
         else
@@ -77,7 +77,7 @@ public class page_createplayer : MonoBehaviour {
             //playerdata.roledatainfo = playerdata.roledata_init();
             for (int i = 0; i < 13; i = i + 1)
             {
-                addlabel("力量 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]), "data"+i, shuxing);
+                addlabel(Configinit.Config_Roledata[101 + i].roledata_name + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]), "data"+i, shuxing);
 
             }
         }
@@ -91,7 +91,7 @@ public class page_createplayer : MonoBehaviour {
 
         Transform panel = camera.transform.Find("createplayer");
         Transform shuxing = panel.transform.Find("shuxing/shuxingtable");
-
+        //Configinit config = new Configinit();
         //Transform wuxing = panel.transform.Find("wuxing/wuxingtable");
         //GameObject.Find("creatplayer").SetActive(false);
         if (shuxing.childCount ==0)
@@ -99,7 +99,12 @@ public class page_createplayer : MonoBehaviour {
             //playerdata.roledatainfo = playerdata.roledata_init();
             for (int i = 0; i < 13; i = i + 1)
             {
-                addlabel("力量 " + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]), "data" + i, shuxing);
+                //Debug.Log(101 + i);
+                //Debug.Log(Configinit.Config_Roledata[102].roledata_name);
+                addlabel(Configinit.Config_Roledata[101 + i].roledata_name + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]), "data" + i, shuxing);
+                //addlabel(Configinit.Config_Roledata[103].roledata_name + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]), "data" + i, shuxing);
+
+                //addlabel("力量" + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]), "data" + i, shuxing);
 
             }
         }
@@ -118,7 +123,7 @@ public class page_createplayer : MonoBehaviour {
             //shuxing.transform.Find("data1").GetComponent<Text>().text = "体魄";
             for (int i = 0; i < 11; i = i + 1)
             {
-                shuxing.transform.Find("data"+i).GetComponent<Text>().text = "耕作 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis[i]);
+                shuxing.transform.Find("data"+i).GetComponent<Text>().text = Configinit.Config_Roledata[201 + i].roledata_name + Convert.ToString(playerdata.roledatainfo.skill_work_basis[i]);
 
             }
         }
@@ -127,7 +132,7 @@ public class page_createplayer : MonoBehaviour {
             //playerdata.roledatainfo = playerdata.roledata_init();
             for (int i = 0; i < 11; i = i + 1)
             {
-                addlabel("耕作 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis[i]), "data"+i, shuxing);
+                addlabel(Configinit.Config_Roledata[201 + i].roledata_name + Convert.ToString(playerdata.roledatainfo.skill_work_basis[i]), "data"+i, shuxing);
 
             }
            
@@ -151,7 +156,7 @@ public class page_createplayer : MonoBehaviour {
             //Debug.Log("3:" + playerdata.roledatainfo.skill_work_basis.STR);
             for (int i = 0; i < 11; i = i + 1)
             {
-                addlabel("耕作 " + Convert.ToString(playerdata.roledatainfo.skill_work_basis[i]), "data" + i, shuxing);
+                addlabel(Configinit.Config_Roledata[201 + i].roledata_name + Convert.ToString(playerdata.roledatainfo.skill_work_basis[i]), "data" + i, shuxing);
 
             }
         }

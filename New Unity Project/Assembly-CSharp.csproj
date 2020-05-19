@@ -73,6 +73,7 @@
     <Compile Include="Assets\script\MapManager.cs" />
     <Compile Include="Assets\script\MyList.cs" />
     <Compile Include="Assets\script\config.cs" />
+    <Compile Include="Assets\script\globalinfo.cs" />
     <Compile Include="Assets\script\page_action.cs" />
     <Compile Include="Assets\script\page_createplayer.cs" />
     <Compile Include="Assets\script\page_home.cs" />

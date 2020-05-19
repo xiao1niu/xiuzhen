@@ -20,14 +20,15 @@ public static class JsonReader
         }
 
     }
-
-    //写入json数据，传入类类型变量。
-    public static void WriteJson(string path, object jsonData)
+}
+/**
+//写入json数据，传入类类型变量。
+public void WriteJson(string path, object jsonData)
     {
         JsonMapper.ToJson(jsonData);
     }
-}
-/**
+
+
 public static string SerializeDictionaryToJsonString<TKey, TValue>(Dictionary<TKey, TValue> dict)
 {
 if (dict.Count == 0)

@@ -1,5 +1,19 @@
 {
-"gameinfo":[{
+"gameinfo":[
+{
+	"roledata_id": 101,
+	"roledata_type": "shuxing",
+	"roledata_name": "力量",
+	"inittype": "2,1,6",
+	"ishide": 0
+},
+{
+	"roledata_id": 102,
+	"roledata_type": "shuxing",
+	"roledata_name": "体质",
+	"inittype": "2,1,6",
+	"ishide": 0
+},{
 	"roledata_id": 103,
 	"roledata_type": "shuxing",
 	"roledata_name": "敏捷",

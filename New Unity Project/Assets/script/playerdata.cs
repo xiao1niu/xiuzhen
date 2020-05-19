@@ -180,7 +180,7 @@ public class playerdata : MonoBehaviour {
                 break;
                 
         }
-        Loadconfig();
+        //Loadconfig();
         return roledatainfo;
 
     }
@@ -285,8 +285,8 @@ public class playerdata : MonoBehaviour {
     }
     public static void Loadconfig()
     {
-        Configinit config = new Configinit();
-        Debug.Log(config.Config_Roledata[103].roledata_name);
+        //Configinit config = new Configinit();
+        //Debug.Log(config.Config_Roledata[103].roledata_name);
         //config.init();
         //string role_name = SD_Roledata.Role_Dic["103"].roledata_type;
         //Debug.Log(role_name);
