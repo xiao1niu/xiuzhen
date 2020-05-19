@@ -69,7 +69,7 @@ public class page_createplayer : MonoBehaviour {
             //shuxing.transform.Find("data1").GetComponent<Text>().text = "体魄";
             for (int i = 0; i < 13; i = i + 1)
             {
-                shuxing.transform.Find("data"+i).GetComponent<Text>().text = Configinit.Config_Roledata[100+i].roledata_name + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]);
+                shuxing.transform.Find("data"+i).GetComponent<Text>().text = playerdata.playerinfo_text("shuxing", i) + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]);
             }
     }
         else
@@ -77,7 +77,7 @@ public class page_createplayer : MonoBehaviour {
             //playerdata.roledatainfo = playerdata.roledata_init();
             for (int i = 0; i < 13; i = i + 1)
             {
-                addlabel(Configinit.Config_Roledata[101 + i].roledata_name + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]), "data"+i, shuxing);
+                addlabel(playerdata.playerinfo_text("shuxing", i) + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]), "data"+i, shuxing);
 
             }
         }
@@ -101,7 +101,7 @@ public class page_createplayer : MonoBehaviour {
             {
                 //Debug.Log(101 + i);
                 //Debug.Log(Configinit.Config_Roledata[102].roledata_name);
-                addlabel(Configinit.Config_Roledata[101 + i].roledata_name + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]), "data" + i, shuxing);
+                addlabel(playerdata.playerinfo_text("shuxing",i) + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]), "data" + i, shuxing);
                 //addlabel(Configinit.Config_Roledata[103].roledata_name + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]), "data" + i, shuxing);
 
                 //addlabel("力量" + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]), "data" + i, shuxing);
@@ -114,16 +114,16 @@ public class page_createplayer : MonoBehaviour {
         GameObject home = GameObject.Find("Canvas/home");
 
         Transform page = home.transform.Find("createplayer");
-        Transform shuxing = page.transform.Find("skill/skilltable");
+        Transform skill = page.transform.Find("skill/skilltable");
 
-        if (shuxing.childCount > 0)
+        if (skill.childCount > 0)
         {
             //playerdata.roledatainfo = playerdata.roledata_init();
             //Debug.Log("1:" + playerdata.roledatainfo.shuxing_basis.STR);
             //shuxing.transform.Find("data1").GetComponent<Text>().text = "体魄";
             for (int i = 0; i < 11; i = i + 1)
             {
-                shuxing.transform.Find("data"+i).GetComponent<Text>().text = Configinit.Config_Roledata[201 + i].roledata_name + Convert.ToString(playerdata.roledatainfo.skill_work_basis[i]);
+                skill.transform.Find("data"+i).GetComponent<Text>().text = playerdata.playerinfo_text("skill_work", i) + Convert.ToString(playerdata.roledatainfo.skill_work_basis[i]);
 
             }
         }
@@ -132,7 +132,7 @@ public class page_createplayer : MonoBehaviour {
             //playerdata.roledatainfo = playerdata.roledata_init();
             for (int i = 0; i < 11; i = i + 1)
             {
-                addlabel(Configinit.Config_Roledata[201 + i].roledata_name + Convert.ToString(playerdata.roledatainfo.skill_work_basis[i]), "data"+i, shuxing);
+                addlabel(playerdata.playerinfo_text("skill_work", i) + Convert.ToString(playerdata.roledatainfo.skill_work_basis[i]), "data"+i, skill);
 
             }
            
@@ -146,17 +146,17 @@ public class page_createplayer : MonoBehaviour {
         GameObject camera = GameObject.Find("home");
 
         Transform panel = camera.transform.Find("createplayer");
-        Transform shuxing = panel.transform.Find("skill/skilltable");
+        Transform skill = panel.transform.Find("skill/skilltable");
 
         //Transform wuxing = panel.transform.Find("wuxing/wuxingtable");
         //GameObject.Find("creatplayer").SetActive(false);
-        if (shuxing.childCount == 0)
+        if (skill.childCount == 0)
         {
             //playerdata.roledatainfo = playerdata.roledata_init();
             //Debug.Log("3:" + playerdata.roledatainfo.skill_work_basis.STR);
             for (int i = 0; i < 11; i = i + 1)
             {
-                addlabel(Configinit.Config_Roledata[201 + i].roledata_name + Convert.ToString(playerdata.roledatainfo.skill_work_basis[i]), "data" + i, shuxing);
+                addlabel(playerdata.playerinfo_text("skill_work", i) + Convert.ToString(playerdata.roledatainfo.skill_work_basis[i]), "data" + i, skill);
 
             }
         }

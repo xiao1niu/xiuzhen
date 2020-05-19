@@ -283,7 +283,31 @@ public class playerdata : MonoBehaviour {
         }
 
     }
-    public static void Loadconfig()
+    public static string playerinfo_text(string type,int i)
+    {
+        int typeid;
+        switch (type) {
+            case "shuxing":
+                return Configinit.Config_Roledata[101 + i].roledata_name;
+                break;
+            case "skill_work":
+                return Configinit.Config_Roledata[2101 + i].roledata_name;
+                break;
+            case "skill_culture":
+                return Configinit.Config_Roledata[2201 + i].roledata_name;
+                break;
+            case "skill_fight":
+                return Configinit.Config_Roledata[2301 + i].roledata_name;
+                break;
+            default:
+                return null;
+                Debug.Log("属性类型:"+ type + " 不在配置中");
+                break;
+
+        }
+
+    }
+        public static void Loadconfig()
     {
         //Configinit config = new Configinit();
         //Debug.Log(config.Config_Roledata[103].roledata_name);
