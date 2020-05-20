@@ -1,6 +1,20 @@
 {
   "roledata": [
     {
+      "roledata_id": 101,
+      "roledata_type": "shuxing",
+      "roledata_name": "力量",
+      "inittype": "2,1,6",
+      "ishide": 0
+    },
+    {
+      "roledata_id": 102,
+      "roledata_type": "shuxing",
+      "roledata_name": "体格",
+      "inittype": "2,1,6",
+      "ishide": 0
+    },
+    {
       "roledata_id": 103,
       "roledata_type": "shuxing",
       "roledata_name": "敏捷",
@@ -297,12 +311,20 @@
   ],
   "roledata_type": [
     {
+      "roledata_type": "shuxing",
+      "roledata_idrange": 100
+    },
+    {
+      "roledata_type": "skill_work",
+      "roledata_idrange": 2100
+    },
+    {
       "roledata_type": "skill_culture",
-      "roledata_id": 2200
+      "roledata_idrange": 2200
     },
     {
       "roledata_type": "skill_fight",
-      "roledata_id": 2300
+      "roledata_idrange": 2300
     }
   ]
 }

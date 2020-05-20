@@ -18,13 +18,14 @@ public class SD_Roledata
     public List<Config_Roledata> roledata { get; set; }
     public List<Roledata_type> roledata_type { get; set; }
 
-    //public Dictionary<int, Config_Roledata> gameinfo_dic { get; set; }
-    //public Dictionary<string, Roledata_type> roledata_type_dic { get; set; }
+    //public Dictionary<string, Config_Roledata> roledata { get; set; }
+    //public Dictionary<string, Roledata_type> roledata_type { get; set; }
 
-    public static Dictionary<int,Config_Roledata> Gameinfo_dic(List<Config_Roledata> list)
+
+    public static Dictionary<string,Config_Roledata> Roledata_dic(List<Config_Roledata> list)
     {
-        Dictionary<int, Config_Roledata> dic;
-        dic= list.ToDictionary(key => key.roledata_id, value => value);
+        Dictionary<string, Config_Roledata> dic;
+        dic= list.ToDictionary(key => key.roledata_id.ToString(), value => value);
         return dic;
     }
     public static Dictionary<string, Roledata_type> Roledata_type_dic(List<Roledata_type> list)
@@ -34,6 +35,7 @@ public class SD_Roledata
         return dic;
     }
 }
+/**
 /**
 public class SD_Roledata_d
 {
@@ -76,6 +78,6 @@ public class Roledata_type
     /// <summary>
     /// 
     /// </summary>
-    public int roledata_id { get; set; }
+    public int roledata_idrange { get; set; }
 }
 

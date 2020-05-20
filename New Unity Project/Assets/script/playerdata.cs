@@ -149,6 +149,7 @@ public class playerdata : MonoBehaviour {
                 for (int i = 10; i < 13; i = i + 1)
                 {
                     shuxing[i] = 0;
+
                 }
                 roledatainfo.shuxing_basis = shuxing;
                 break;
@@ -286,7 +287,12 @@ public class playerdata : MonoBehaviour {
     public static string playerinfo_text(string type,int i)
     {
         int typeid;
+        int id = Configinit.Config_Roledata_type[type].roledata_idrange;
+        typeid = id+ 1 + i;
+        return Configinit.Config_Roledata[typeid.ToString()].roledata_name;
+        /*
         switch (type) {
+            Configinit.Config_Roledata_type[type]+1+i
             case "shuxing":
                 return Configinit.Config_Roledata[101 + i].roledata_name;
                 break;
@@ -305,6 +311,8 @@ public class playerdata : MonoBehaviour {
                 break;
 
         }
+        
+
 
     }
         public static void Loadconfig()
