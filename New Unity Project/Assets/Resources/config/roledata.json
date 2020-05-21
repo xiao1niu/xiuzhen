@@ -60,28 +60,28 @@
       "roledata_id": 109,
       "roledata_type": "shuxing",
       "roledata_name": "魅力",
-      "inittype": "2,1,6",
+      "inittype": "0,0,0",
       "ishide": 0
     },
     {
       "roledata_id": 110,
       "roledata_type": "shuxing",
       "roledata_name": "根骨",
-      "inittype": "2,1,6",
+      "inittype": "0,0,0",
       "ishide": 1
     },
     {
       "roledata_id": 111,
       "roledata_type": "shuxing",
       "roledata_name": "慧根",
-      "inittype": "2,1,6",
+      "inittype": "0,0,0",
       "ishide": 1
     },
     {
       "roledata_id": 112,
       "roledata_type": "shuxing",
       "roledata_name": "福缘",
-      "inittype": "2,1,6",
+      "inittype": "0,0,0",
       "ishide": 1
     },
     {
@@ -312,19 +312,23 @@
   "roledata_type": [
     {
       "roledata_type": "shuxing",
-      "roledata_idrange": 100
+      "roledata_idrange": 100,
+      "roledata_idcount": 12
     },
     {
       "roledata_type": "skill_work",
-      "roledata_idrange": 2100
+      "roledata_idrange": 2100,
+      "roledata_idcount": 11
     },
     {
       "roledata_type": "skill_culture",
-      "roledata_idrange": 2200
+      "roledata_idrange": 2200,
+      "roledata_idcount": 9
     },
     {
       "roledata_type": "skill_fight",
-      "roledata_idrange": 2300
+      "roledata_idrange": 2300,
+      "roledata_idcount": 12
     }
   ]
 }

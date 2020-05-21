@@ -67,7 +67,7 @@ public class page_createplayer : MonoBehaviour {
             //playerdata.roledatainfo.shuxing_basis=playerdata.shuxing_init(playerdata.roledatainfo);
             //Debug.Log("1:" + playerdata.roledatainfo.shuxing_basis.STR);
             //shuxing.transform.Find("data1").GetComponent<Text>().text = "体魄";
-            for (int i = 0; i < 13; i = i + 1)
+            for (int i = 0; i < 11; i = i + 1)
             {
                 shuxing.transform.Find("data"+i).GetComponent<Text>().text = playerdata.playerinfo_text("shuxing", i) + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]);
             }
@@ -75,7 +75,7 @@ public class page_createplayer : MonoBehaviour {
         else
         {
             //playerdata.roledatainfo = playerdata.roledata_init();
-            for (int i = 0; i < 13; i = i + 1)
+            for (int i = 0; i < 11; i = i + 1)
             {
                 addlabel(playerdata.playerinfo_text("shuxing", i) + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]), "data"+i, shuxing);
 
@@ -97,7 +97,7 @@ public class page_createplayer : MonoBehaviour {
         if (shuxing.childCount ==0)
         {
             //playerdata.roledatainfo = playerdata.roledata_init();
-            for (int i = 0; i < 13; i = i + 1)
+            for (int i = 0; i < 11; i = i + 1)
             {
                 //Debug.Log(101 + i);
                 //Debug.Log(Configinit.Config_Roledata[102].roledata_name);

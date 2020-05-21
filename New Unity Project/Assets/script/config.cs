@@ -15,7 +15,7 @@ public static class Configinit
        
         foreach (var info in Config_Roledata)
         {
-            Debug.Log(info.Key + " " + info.Value.roledata_name);
+            //Debug.Log(info.Key + " " + info.Value.roledata_name);
         }
         /*
        */

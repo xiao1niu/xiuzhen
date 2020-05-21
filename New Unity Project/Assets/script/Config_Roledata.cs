@@ -79,5 +79,6 @@ public class Roledata_type
     /// 
     /// </summary>
     public int roledata_idrange { get; set; }
+    public int roledata_idcount { get; set; }
 }
 
