@@ -147,12 +147,12 @@ public class playerdata : MonoBehaviour
 
         //shuxing = GetNum(2, 1, 6, 10, shuxing);
 
-        for (int i = 0; i < Configinit.Config_Roledata_type[type].roledata_idcount-1; i++)
+        for (int i = 0; i < Configinit.Config_Roledata_type[type].roledata_idcount; i++)
         {
             //int[] arr;
             //string line = "";
             Debug.Log("max=" + Configinit.Config_Roledata_type[type].roledata_idcount);
-            Debug.Log("i="+i+"   "+roledata_getid(type, i));
+            Debug.Log("i=" + i + "   " + roledata_getid(type, i));
             string line = Configinit.Config_Roledata[roledata_getid(type, i).ToString()].inittype;
             int[] linearr = Array.ConvertAll<string, int>(line.Split(new string[] { "," }, StringSplitOptions.None), int.Parse);
             dataarry[i] = SetNum(linearr);
@@ -173,62 +173,7 @@ public class playerdata : MonoBehaviour
                 roledatainfo.skill_fight_basis = dataarry;
                 break;
         }
-            /*
-        switch (type)
-        {
-            case "shuxing":
-                
-                float[] shuxing = new float[13];
-                //int[] attributie_hide = new int[5];
-                //随机基础属性
-
-                //shuxing = GetNum(2, 1, 6, 10, shuxing);
-
-                for (int i = 0; i < Configinit.Config_Roledata_type[type].roledata_idrange-1; i ++)
-                {
-                    //int[] arr;
-                    //string line = "";
-                    Debug.Log(roledata_getid(type, i));
-                    string line = Configinit.Config_Roledata[roledata_getid(type, i).ToString()].inittype;
-                    int[] linearr = Array.ConvertAll<string, int>(line.Split(new string[] { "," }, StringSplitOptions.None), int.Parse);
-                    shuxing[i] = SetNum(linearr);
-
-                }
-                roledatainfo.shuxing_basis = shuxing;
-                break;
-            case "skill_work":
-                float[] skill_work = new float[11];
-                //skill_work = GetNum(2, 1, 10, 4, skill_work);
-                for (int i = 0; i < Configinit.Config_Roledata_type[type].roledata_idrange - 1; i++)
-                {
-                    int[] linearr = Array.ConvertAll<string, int>(Configinit.Config_Roledata[roledata_getid(type, i).ToString()].inittype.Split(new string[] { "," }, StringSplitOptions.None), int.Parse);
-                    skill_work[i] = SetNum(linearr);
-                }
-                roledatainfo.skill_work_basis = skill_work;
-                break;
-            case "skill_culture":
-                float[] skill_culture = new float[9];
-                for (int i = 0; i < Configinit.Config_Roledata_type[type].roledata_idrange - 1; i++)
-                {
-                    int[] linearr = Array.ConvertAll<string, int>(Configinit.Config_Roledata[roledata_getid(type, i).ToString()].inittype.Split(new string[] { "," }, StringSplitOptions.None), int.Parse);
-                    skill_culture[i] = SetNum(linearr);
-                }
-                roledatainfo.skill_culture_basis = skill_culture;
-                break;
-            case "skill_fight":
-                float[] skill_fight = new float[12];
-
-                for (int i = 0; i < Configinit.Config_Roledata_type[type].roledata_idrange - 1; i++)
-                {
-                    int[] linearr = Array.ConvertAll<string, int>(Configinit.Config_Roledata[roledata_getid(type, i).ToString()].inittype.Split(new string[] { "," }, StringSplitOptions.None), int.Parse);
-                    skill_fight[i] = SetNum(linearr);
-                }
-                roledatainfo.skill_fight_basis = skill_fight;
-                break;
-
-        }
-        */
-            //Loadconfig();
+        //Loadconfig();
         return roledatainfo;
 
     }
@@ -242,11 +187,11 @@ public class playerdata : MonoBehaviour
         System.Random rand;
         ra = new System.Random(unchecked((int)DateTime.Now.Ticks) * 7);
         rand = new System.Random(ra.Next(0, 100));
-        for (int i=0;i<arr[0]; i++)
+        for (int i = 0; i < arr[0]; i++)
         {
             tmp = tmp + rand.Next(arr[1], arr[2] + 1);
         }
-            //Debug.Log("rand：" + randnum);
+        //Debug.Log("rand：" + randnum);
         return tmp;
     }
     //返回随机值，随机次数：num，随机范围： [minValue,maxValue]，放大系数
@@ -362,98 +307,6 @@ public class playerdata : MonoBehaviour
         Debug.Log("typeid:" + typeid);
         return typeid;
     }
-    /*
-    switch (type) {
-        Configinit.Config_Roledata_type[type]+1+i
-        case "shuxing":
-            return Configinit.Config_Roledata[101 + i].roledata_name;
-            break;
-        case "skill_work":
-            return Configinit.Config_Roledata[2101 + i].roledata_name;
-            break;
-        case "skill_culture":
-            return Configinit.Config_Roledata[2201 + i].roledata_name;
-            break;
-        case "skill_fight":
-            return Configinit.Config_Roledata[2301 + i].roledata_name;
-            break;
-        default:
-            return null;
-            Debug.Log("属性类型:"+ type + " 不在配置中");
-            break;
-
-    }
-
-
-
-}
-    public static void Loadconfig()
-{
-    //Configinit config = new Configinit();
-    //Debug.Log(config.Config_Roledata[103].roledata_name);
-    //config.init();
-    //string role_name = SD_Roledata.Role_Dic["103"].roledata_type;
-    //Debug.Log(role_name);
-
-    //string filePath = Application.dataPath + "config/roledata";
-    //var serializer = new JavaScriptSerializer();
-    //JObject o;
-    //if (File.Exists(filePath))
-    //{
-    //Debug.Log(Application.dataPath + "读取存档: save0" +n);
-    //BinaryFormatter bf = new BinaryFormatter();
-    //FileStream file = File.Open(filePath, FileMode.Open);
-    //string json = (string)bf.Deserialize(file);
-    //using (System.IO.StreamReader file = System.IO.File.OpenText("config/roledata"))
-    //{
-    //TextAsset jsonData = Resources.Load<TextAsset>("config/roledata");
-    //Debug.Log(jsonData.text);
-
-    //JsonData data = JsonMapper.ToObject(jsonData.text);
-    //Debug.Log(data["roledata_id"]);
-    //Debug.Log(data["gameinfo"]);
-    // SD_Roledata l = JsonMapper.ToObject<SD_Roledata>(jsonData.text);
-    //SD_Roledata_d config_s = new SD_Roledata_d();
-    //config_s.Config_Roledata = l.gameinfo.ToDictionary(key => key.roledata_id, value => value); 
-    //o = (JObject)JToken.ReadFrom(reader);
-    //var json = o[key].ToString();
-    //Debug.Log(d.cr_List.Count); 
-    /*
-    foreach (var info in l.gameinfo)
-            {
-                Debug.Log(info.Key + " " + info.Value.roledata_name);
-            }
-    Debug.Log(l.gameinfo.Config_Roledata[103].roledata_name);
-    */
-    // }
-
-    //Debug.Log(o);
-    //file.Close();
-    //string jsonline = serializer.Deserialize<string>(json);
-    //Dictionary<int, Config_Roledata> dic2 = JsonConvert.DeserializeObject<Dictionary<int, Config_Roledata>>(json);
-
-    /*
-    foreach (var item in dic2)
-    {
-        Console.WriteLine($"{item.Key}---->{item.Value}");
-    }
-    */
-
-    //Config_Roledata config_roledata = JsonUtility.FromJson<Config_Roledata>(json);
-    //Debug.Log(jsonline);
-    //return config_roledata;
-    /*
-        }
-            else
-            {
-                Debug.Log( filePath + " 不存在");
-                //return null;
-            }
-    */
-
-
-
-
 
 }
 

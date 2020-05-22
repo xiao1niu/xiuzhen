@@ -55,31 +55,65 @@ public class page_createplayer : MonoBehaviour {
         newlabel.fontSize = 25;
         newlabel.alignment = TextAnchor.MiddleLeft;
     }
-        public static void shuxing_setdata()
+    public static void setdata(string type, Transform lableobj,float[] arr)
+    {
+        for (int i = 0; i < Configinit.Config_Roledata_type[type].roledata_idcount; i ++)
+        {
+            if (Configinit.Config_Roledata[roledata_getid(type, i).ToString()].ishide == 1)
+            {
+                continue;
+            }
+            else
+            {
+                lableobj.transform.Find("data" + i).GetComponent<Text>().text = playerdata.playerinfo_text(type, i) + Convert.ToString(arr[i]);
+            }
+        }
+    }
+    public static void adddata(string type, Transform lableobj, float[] arr)
+    {
+        for (int i = 0; i < Configinit.Config_Roledata_type[type].roledata_idcount; i++)
+        {
+            if(Configinit.Config_Roledata[roledata_getid(type, i).ToString()].ishide==1)
+            {
+                continue;
+            }
+            else { 
+            //lableobj.transform.Find("data" + i).GetComponent<Text>().text = playerdata.playerinfo_text(type, i) + Convert.ToString(arr[i]);
+            addlabel(playerdata.playerinfo_text(type, i) + Convert.ToString(arr[i]), "data" + i, lableobj);
+            }
+        }
+    }
+    public static void shuxing_setdata()
     {
         GameObject home = GameObject.Find("Canvas/home");
     
         Transform page = home.transform.Find("createplayer");
         Transform shuxing = page.transform.Find("shuxing/shuxingtable");
-        
+        string type = "shuxing";
         if (shuxing.childCount > 0)
         {
+            setdata(type, shuxing, playerdata.roledatainfo.shuxing_basis);
             //playerdata.roledatainfo.shuxing_basis=playerdata.shuxing_init(playerdata.roledatainfo);
             //Debug.Log("1:" + playerdata.roledatainfo.shuxing_basis.STR);
             //shuxing.transform.Find("data1").GetComponent<Text>().text = "体魄";
+            /*
             for (int i = 0; i < 11; i = i + 1)
             {
                 shuxing.transform.Find("data"+i).GetComponent<Text>().text = playerdata.playerinfo_text("shuxing", i) + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]);
             }
-    }
+            */
+        }
         else
         {
+            adddata(type, shuxing, playerdata.roledatainfo.shuxing_basis);
             //playerdata.roledatainfo = playerdata.roledata_init();
+            /*
             for (int i = 0; i < 11; i = i + 1)
             {
                 addlabel(playerdata.playerinfo_text("shuxing", i) + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]), "data"+i, shuxing);
 
             }
+            */
         }
         //GameObject.Find("creatplayer").SetActive(false)
 
@@ -96,7 +130,9 @@ public class page_createplayer : MonoBehaviour {
         //GameObject.Find("creatplayer").SetActive(false);
         if (shuxing.childCount ==0)
         {
+            adddata("shuxing", shuxing, playerdata.roledatainfo.shuxing_basis);
             //playerdata.roledatainfo = playerdata.roledata_init();
+            /*
             for (int i = 0; i < 11; i = i + 1)
             {
                 //Debug.Log(101 + i);
@@ -107,6 +143,7 @@ public class page_createplayer : MonoBehaviour {
                 //addlabel("力量" + Convert.ToString(playerdata.roledatainfo.shuxing_basis[i]), "data" + i, shuxing);
 
             }
+            */
         }
     }
     public static void skill_setdata()
