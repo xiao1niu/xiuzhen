@@ -66,6 +66,7 @@
     <Compile Include="Assets\FileController.cs" />
     <Compile Include="Assets\bclick.cs" />
     <Compile Include="Assets\mapcreater.cs" />
+    <Compile Include="Assets\page_gamehome.cs" />
     <Compile Include="Assets\saveplayer.cs" />
     <Compile Include="Assets\script\BaseState.cs" />
     <Compile Include="Assets\script\Config_Roledata.cs" />
