@@ -65,6 +65,7 @@
     <Compile Include="Assets\CSV.cs" />
     <Compile Include="Assets\FileController.cs" />
     <Compile Include="Assets\bclick.cs" />
+    <Compile Include="Assets\mapcreat.cs" />
     <Compile Include="Assets\mapcreater.cs" />
     <Compile Include="Assets\page_gamehome.cs" />
     <Compile Include="Assets\saveplayer.cs" />
