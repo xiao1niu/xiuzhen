@@ -54,9 +54,9 @@ public class mapcreat : MonoBehaviour
     void InitTile()
     {
         //创建3钟类型的地面瓦片
-        AddTile("soil", "Image/soil");
-        AddTile("brick", "Image/brick");
-        AddTile("grass", "Image/grass");
+        AddTile("soil", "map/map_100");
+        AddTile("brick", "map/map_101");
+        AddTile("grass", "map/map_102");
 
     }
 
