@@ -70,10 +70,12 @@
     <Compile Include="Assets\page_gamehome.cs" />
     <Compile Include="Assets\saveplayer.cs" />
     <Compile Include="Assets\script\BaseState.cs" />
+    <Compile Include="Assets\script\Config_Map.cs" />
     <Compile Include="Assets\script\Config_Roledata.cs" />
     <Compile Include="Assets\script\JsonReader.cs" />
     <Compile Include="Assets\script\MapManager.cs" />
     <Compile Include="Assets\script\MyList.cs" />
+    <Compile Include="Assets\script\SpriteTailed.cs" />
     <Compile Include="Assets\script\config.cs" />
     <Compile Include="Assets\script\globalinfo.cs" />
     <Compile Include="Assets\script\page_action.cs" />

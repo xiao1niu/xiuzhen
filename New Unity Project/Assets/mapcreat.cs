@@ -6,9 +6,11 @@ using UnityEngine.Tilemaps;
 public class mapcreat : MonoBehaviour
 {
     public Tilemap tilemap;//引用的Tilemap，加入脚本后需要将对应tilemap拖进来
+    public Tilemap bgmap;//引用的Tilemap，加入脚本后需要将对应tilemap拖进来
     private Dictionary<string, Tile> arrTiles; //地块种类
     private List<string> TilesName;
     string[] TileType;
+    string[] TileType_basis;
     //大地图宽高
     public int levelW = 10;
     public int levelH = 10;
@@ -19,6 +21,7 @@ public class mapcreat : MonoBehaviour
         TilesName = new List<string>();
         InitTile();
         InitMapTilesInfo();
+        InitMapbasisInfo();
         InitData();
     }
 
@@ -34,6 +37,8 @@ public class mapcreat : MonoBehaviour
             for (int j = 0; j < levelW; j++)
             {
                 tilemap.SetTile(new Vector3Int(j, i, 0), arrTiles[TileType[i * levelW + j]]);
+                bgmap.SetTile(new Vector3Int(j, i, 0), arrTiles[TileType_basis[i * levelW + j]]);
+
             }
         }
     }
@@ -46,17 +51,36 @@ public class mapcreat : MonoBehaviour
         {
             for (int j = 0; j < levelW; j++)
             {
-                TileType[i * levelW + j] = TilesName[Random.Range(0, TilesName.Count)];
+                TileType[i * levelW + j] = TilesName[Random.Range(1, TilesName.Count)];
+  
+            }
+        }
+    }
+    void InitMapbasisInfo()
+    {
+        //初始化地图信息，即每个单位对应的地面类型
+        TileType_basis = new string[levelH * levelW];
+        for (int i = 0; i < levelH; i++)
+        {
+            for (int j = 0; j < levelW; j++)
+            {
+                TileType_basis[i * levelW + j] = TilesName[0];
             }
         }
     }
 
     void InitTile()
     {
+        foreach (var info in Configinit.Config_Map)
+        {
+            AddTile(info.Value.id.ToString(), info.Value.pic);
+            //Debug.Log(info.Key + " " + info.Value.pic);
+        }
+        //Configinit.Config_Map[type].pic
         //创建3钟类型的地面瓦片
-        AddTile("soil", "map/map_100");
-        AddTile("brick", "map/map_101");
-        AddTile("grass", "map/map_102");
+        //AddTile("soil", "map/map_100");
+        //AddTile("brick", "map/map_101");
+        //AddTile("grass", "map/map_102");
 
     }
 

@@ -1,0 +1,40 @@
+{
+"map": [
+  {
+    "id": 1000,
+    "type": 10,
+    "name": "草地",
+    "pic": "map/map_1000"
+  },
+  {
+    "id": 100,
+    "type": 1,
+    "name": "空地",
+    "pic": ""
+  },
+  {
+    "id": 101,
+    "type": 1,
+    "name": "林地",
+    "pic": "map/map_101"
+  },
+  {
+    "id": 102,
+    "type": 1,
+    "name": "石山",
+    "pic": "map/map_102"
+  },
+  {
+    "id": 103,
+    "type": 1,
+    "name": "矿山",
+    "pic": "map/map_103"
+  },
+  {
+    "id": 200,
+    "type": 2,
+    "name": "山脉",
+    "pic": "map/map_200"
+  }
+]
+}
