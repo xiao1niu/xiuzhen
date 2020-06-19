@@ -4,37 +4,57 @@
     "id": 1000,
     "type": 10,
     "name": "草地",
-    "pic": "map/map_1000"
+    "pic": "map/map_1000",
+    "weight": 0
   },
   {
     "id": 100,
     "type": 1,
     "name": "空地",
-    "pic": ""
+    "pic": "",
+    "weight": 50
   },
   {
     "id": 101,
     "type": 1,
     "name": "林地",
-    "pic": "map/map_101"
+    "pic": "map/map_101",
+    "weight": 50
   },
   {
     "id": 102,
     "type": 1,
     "name": "石山",
-    "pic": "map/map_102"
+    "pic": "map/map_102",
+    "weight": 10
   },
   {
     "id": 103,
     "type": 1,
     "name": "矿山",
-    "pic": "map/map_103"
+    "pic": "map/map_103",
+    "weight": 10
   },
   {
     "id": 200,
     "type": 2,
     "name": "山脉",
-    "pic": "map/map_200"
+    "pic": "map/map_200",
+    "weight": 20
+  },
+  {
+    "id": 2101,
+    "type": 1,
+    "name": "村庄",
+    "pic": "map/map_2101",
+    "weight": 5
+  },
+  {
+    "id": 2102,
+    "type": 1,
+    "name": "城市",
+    "pic": "map/map_2102",
+    "weight": 1
   }
 ]
 }

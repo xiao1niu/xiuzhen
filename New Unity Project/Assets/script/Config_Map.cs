@@ -37,5 +37,7 @@ public class Config_Map
     /// 
     /// </summary>
     public string pic { get; set; }
+
+    public int weight { get; set; }
 }
 

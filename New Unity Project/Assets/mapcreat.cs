@@ -12,8 +12,12 @@ public class mapcreat : MonoBehaviour
     string[] TileType;
     string[] TileType_basis;
     //大地图宽高
-    public int levelW = 10;
-    public int levelH = 10;
+    public int levelW;
+    public int levelH;
+    public int city = 1;
+    public int village = 3;
+    public int mine = 3;
+    public int stone = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,12 +51,79 @@ public class mapcreat : MonoBehaviour
     {
         //初始化地图信息，即每个单位对应的地面类型
         TileType = new string[levelH * levelW];
+        int check = 0;
+        int city_c = 0;
+        int village_c = 0;
+        int mine_c = 0;
+        int stone_c = 0;
+        int dikuai;
         for (int i = 0; i < levelH; i++)
         {
             for (int j = 0; j < levelW; j++)
             {
-                TileType[i * levelW + j] = TilesName[Random.Range(1, TilesName.Count)];
-  
+                check = 0;
+                dikuai = Randmap();
+                    //Random.Range(1, TilesName.Count);
+
+                while (check == 0)
+                {
+                    switch (dikuai)
+                    {
+                        case 102://石山
+                            if (stone_c < stone)
+                            {
+                                check = 1;
+                                stone_c++;
+                            }
+                            else
+                            {
+                                check = 0;
+                            }
+                            break;
+                        case 103://矿山
+                            if (mine_c < mine)
+                            {
+                                check = 1;
+                                mine_c++;
+                            }
+                            else
+                            {
+                                check = 0;
+                            }
+                            break;
+                        case 2101://村庄
+                            if (village_c < village)
+                            {
+                                check = 1;
+                                village_c++;
+                            }
+                            else
+                            {
+                                check = 0;
+                            }
+                            break;
+                        case 2102://城市
+                            if (city_c < city)
+                            {
+                                check = 1;
+                                city_c++;
+                            }
+                            else
+                            {
+                                check = 0;
+                            }
+                            break;
+                        default:
+                            check = 1;
+                            break;
+                    }
+                    if (check == 0)
+                    {
+                        dikuai = Randmap();
+                    }
+                }
+                TileType[i * levelW + j] = dikuai.ToString();
+                Debug.Log("dikuai:" + dikuai);
             }
         }
     }
@@ -74,7 +145,7 @@ public class mapcreat : MonoBehaviour
         foreach (var info in Configinit.Config_Map)
         {
             AddTile(info.Value.id.ToString(), info.Value.pic);
-            //Debug.Log(info.Key + " " + info.Value.pic);
+            Debug.Log(info.Key + " " + info.Value.pic);
         }
         //Configinit.Config_Map[type].pic
         //创建3钟类型的地面瓦片
@@ -92,5 +163,31 @@ public class mapcreat : MonoBehaviour
         arrTiles.Add(labelName, tile);
         TilesName.Add(labelName);
 
+    }
+    private int Randmap()
+    {
+        int maxweight=0;
+        Dictionary<int,int> weightlist=new Dictionary<int, int>();
+        foreach (var info in Configinit.Config_Map)
+        {
+            maxweight = maxweight + info.Value.weight;
+            //Debug.Log(info.Key + " " + info.Value.pic);
+            weightlist.Add( maxweight, info.Value.id);
+        }
+        int weight=Random.Range(1, maxweight);
+        int mat = maxweight;
+        foreach (var info in weightlist)
+        {
+            if  (weight<= info.Key )
+            {
+                if (info.Key <= mat)
+                {
+                    mat = info.Key;
+                }
+
+            }
+            
+        }
+        return weightlist[mat];
     }
 }
