@@ -196,8 +196,8 @@ TilemapRenderer:
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
-  m_SortOrder: 2
-  m_Mode: 0
+  m_SortOrder: 3
+  m_Mode: 1
   m_DetectChunkCullingBounds: 1
   m_MaskInteraction: 0
 --- !u!1839735485 &335885167
@@ -335,13 +335,13 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {r: -4.2446747, g: -4.2446747, b: -4.2446747, a: -4.2446747}
   - m_RefCount: 0
-    m_Data: {r: -0.0000000023362716, g: -0.0000000023362716, b: -0.0000000023362716,
-      a: -0.0000000023362716}
+    m_Data: {r: -0.0000000016186945, g: -0.0000000016186945, b: -0.0000000016186945,
+      a: -0.0000000016186945}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -12, y: -7, z: 0}
-  m_Size: {x: 18, y: 15, z: 1}
+  m_Size: {x: 18, y: 76, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -421,8 +421,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 335885167}
   bgmap: {fileID: 1051685378}
-  levelW: 10
-  levelH: 10
+  levelW: 20
+  levelH: 20
+  _maxHeight: 6
+  _relief: 15
+  city: 3
+  village: 15
+  mine: 40
+  stone: 60
 --- !u!1 &562453305
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,7 +585,7 @@ TilemapRenderer:
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
-  m_SortOrder: 2
+  m_SortOrder: 3
   m_Mode: 0
   m_DetectChunkCullingBounds: 1
   m_MaskInteraction: 0
@@ -718,13 +724,13 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {r: -4.2446747, g: -4.2446747, b: -4.2446747, a: -4.2446747}
   - m_RefCount: 0
-    m_Data: {r: -0.0000000023362716, g: -0.0000000023362716, b: -0.0000000023362716,
-      a: -0.0000000023362716}
+    m_Data: {r: -0.0000000016047252, g: -0.0000000016047252, b: -0.0000000016047252,
+      a: -0.0000000016047252}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -12, y: -7, z: 0}
-  m_Size: {x: 18, y: 15, z: 1}
+  m_Size: {x: 19, y: 79, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
