@@ -1,5 +1,10 @@
-﻿using System.Collections;
+﻿using LitJson;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -22,25 +27,87 @@ public class mapcreat : MonoBehaviour
     public int village = 30;
     public int mine = 80;
     public int stone = 100;
+    
     // Start is called before the first frame update
     void Start()
     {
+        TileType = new string[levelH * levelW];
         arrTiles = new Dictionary<string, Tile>();
         TilesName = new List<string>();
         InitTile();
-        InitMapTilesInfo();
         InitMapbasisInfo();
+        if (!File.Exists(Application.dataPath + "/save/map.txt"))
+        {
+
+            InitMapTilesInfo();
+            //Savemap();
+        }
+        else {
+            gamedata_Map mapdata =Loadmap();
+            foreach (var info in mapdata.map)
+            {
+                Debug.Log(info.Key);
+                TileType[Convert.ToInt32(info.Key)] = info.Value.mapdetail.ToString();
+            }   
+        }
         InitData();
+
     }
 
     // Update is called once per frame
     void Update()
     {
     }
-
-    void InitData()
+    void Savemap(gamedata_Map mapdata)
     {
-        for (int i = 0; i < levelH; i++)
+        mapdata.mapname = "map" + ".txt";
+        string filePath = Application.dataPath + "/save/"+ mapdata.mapname;
+        string json = JsonMapper.ToJson(mapdata);
+        //string json = JsonUtility.ToJson(mapdata);
+        byte[] data = System.Text.Encoding.Default.GetBytes(json);
+        //BinaryFormatter bf = new BinaryFormatter();
+        if (!File.Exists(filePath))
+            {
+                FileStream fs = new FileStream(filePath, FileMode.Create);
+                //FileStream file = File.Create(Application.dataPath + "/save/" + mapdata.mapname);
+                Debug.Log(json);
+                fs.Write(data, 0, data.Length);
+            //清空缓冲区、关闭流
+                fs.Flush();
+                fs.Close();
+            //bf.Serialize(file, json);
+            //file.Close();
+            //Debug.Log("Saving as JSON: " + json);
+            // Debug.Log("Game Saved "+ save.name);
+        }
+
+    }
+    gamedata_Map Loadmap()
+    {
+        string filePath = Application.dataPath + "/save/map.txt";
+        string myStr;
+        using (FileStream fsRead = new FileStream(@filePath, FileMode.Open))
+        {
+            int fsLen = (int)fsRead.Length;
+            byte[] heByte = new byte[fsLen];
+            int r = fsRead.Read(heByte, 0, heByte.Length);
+            myStr = System.Text.Encoding.UTF8.GetString(heByte);     
+        
+        if (myStr == null)
+        {
+            Debug.Log("根据路径未找到对应表格数据");
+            return default(gamedata_Map);
+        }
+        else
+        {
+            gamedata_Map  obj = JsonMapper.ToObject<gamedata_Map>(myStr);
+            return obj;
+        }
+        }
+    }
+        void InitData()
+    {
+        for (int i = 0; i <levelH; i++)
         {//根据地面类型TileType初始化tilemap
             for (int j = 0; j < levelW; j++)
             {
@@ -53,8 +120,8 @@ public class mapcreat : MonoBehaviour
 
     void InitMapTilesInfo()
     {
-        _seedX = Random.value * 100f;
-        _seedZ = Random.value * 100f;
+        _seedX = UnityEngine.Random.value * 100f;
+        _seedZ = UnityEngine.Random.value * 100f;
 
         //初始化地图信息，即每个单位对应的地面类型
         TileType = new string[levelH * levelW];
@@ -64,7 +131,10 @@ public class mapcreat : MonoBehaviour
         int mine_c = 0;
         int stone_c = 0;
         int dikuai=100;
+        gamedata_Map mapdata = new gamedata_Map();
+        mapdata.map = new Dictionary<string, Mapunit>();
         float height_y;
+
         for (int i = 0; i < levelH; i++)
         {
             for (int j = 0; j < levelW; j++)
@@ -152,9 +222,20 @@ public class mapcreat : MonoBehaviour
                 else if (height_y <= _maxHeight * 0.2f)
                 { dikuai = 101; }
                 TileType[i * levelW + j] = dikuai.ToString();
-                Debug.Log("dikuai:" + dikuai);
+                mapdata.map.Add(Convert.ToString(i * levelW + j) , setunit(dikuai, i,j));
+                //Debug.Log("dikuai:" + dikuai);
             }
         }
+        Savemap(mapdata);
+    }
+    Mapunit setunit(int dikuai,int posx, int posy)
+    {
+        Mapunit unit = new Mapunit();
+        unit.mapid = posx * levelW + posy;
+        unit.mapdetail= dikuai;
+        unit.pos =new int[2] {posx, posy};
+        return unit;
+
     }
     void InitMapbasisInfo()
     {
@@ -174,7 +255,7 @@ public class mapcreat : MonoBehaviour
         foreach (var info in Configinit.Config_Map)
         {
             AddTile(info.Value.id.ToString(), info.Value.pic);
-            Debug.Log(info.Key + " " + info.Value.pic);
+            //Debug.Log(info.Key + " " + info.Value.pic);
         }
         //Configinit.Config_Map[type].pic
         //创建3钟类型的地面瓦片
@@ -207,7 +288,7 @@ public class mapcreat : MonoBehaviour
             
             }
         }
-        int weight=Random.Range(1, maxweight+1);
+        int weight= UnityEngine.Random.Range(1, maxweight+1);
         int mat = maxweight;
         foreach (var info in weightlist)
         {
