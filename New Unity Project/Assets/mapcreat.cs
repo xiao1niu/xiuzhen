@@ -105,7 +105,7 @@ public class mapcreat : MonoBehaviour
         }
         }
     }
-        void InitData()
+    void InitData()
     {
         for (int i = 0; i <levelH; i++)
         {//根据地面类型TileType初始化tilemap
