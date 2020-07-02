@@ -42,22 +42,31 @@ public class page_createworld : MonoBehaviour
             {
             try
             {
-                ToggleX = unit_toggle.transform.Find("Toggle" + num).gameObject;
-                
+                ToggleX = unit_worldset.transform.parent.Find("Toggle" + num).gameObject;
+                    //GetComponentInParent.().Find("set"+n+ "table_toggle/Toggle" + num).gameObject;
+
             } 
-            catch(NullReferenceException e)
+            catch
             {
                 //Debug.Log("{0} First exception."+ e.Message);
-                ToggleX = Instantiate(unit_toggle);
-                ToggleX.transform.SetParent(table_worldset.transform.Find("table_toggle"));
-                ToggleX.transform.name = "Toggle" + num;
-                
+                if (num != 1)
+                {
+                    ToggleX = Instantiate(unit_toggle);
+                    ToggleX.transform.SetParent(unit_worldset.transform.Find("table_toggle"));
+                    ToggleX.transform.name = "Toggle" + num;
+                    ToggleX.transform.localScale = new Vector3(1,1,1);
+                }
+                else
+                {
+                    ToggleX = unit_toggle;
+                }
             }
             finally
             {
                 Debug.Log("Toggle" + num + "/Label");
                 //unit_toggle.GetComponent<Text>().text = togglelist[num];
                 ToggleX.transform.Find("Label").gameObject.GetComponent<Text>().text = togglelist[num];
+
             }
         }
     }

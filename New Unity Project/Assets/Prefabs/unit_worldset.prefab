@@ -234,6 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7751152763163337391}
   - component: {fileID: 7458513121984135100}
+  - component: {fileID: 7404574388069661941}
   m_Layer: 0
   m_Name: Toggle1
   m_TagString: Untagged
@@ -304,11 +305,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9037657346593589904}
   toggleTransition: 1
   graphic: {fileID: 1809255754178324026}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 5667516385907989579}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7404574388069661941}
+        m_MethodName: settoggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
+--- !u!114 &7404574388069661941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5748858828819794757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 092a4b46336a3c04a8a8775356f42736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6332271822694025332
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6332271823482288979}
   - component: {fileID: 6332271823482288989}
+  - component: {fileID: 5667516385907989579}
   m_Layer: 0
   m_Name: table_toggle
   m_TagString: Untagged
@@ -484,3 +509,16 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
+--- !u!114 &5667516385907989579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6332271823482288978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AllowSwitchOff: 0

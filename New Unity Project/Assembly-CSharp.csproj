@@ -86,6 +86,7 @@
     <Compile Include="Assets\script\page_home.cs" />
     <Compile Include="Assets\script\page_loadgame.cs" />
     <Compile Include="Assets\script\playerdata.cs" />
+    <Compile Include="Assets\script\toggle_set.cs" />
     <None Include="Assets\save\map.txt" />
     <None Include="Assets\script\BaseCharacter.txt" />
     <Reference Include="com.unity.multiplayer-hlapi.Editor">
