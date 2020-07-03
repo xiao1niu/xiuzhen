@@ -46,7 +46,7 @@ public class mapcreat : MonoBehaviour
             gamedata_Map mapdata =Loadmap();
             foreach (var info in mapdata.map)
             {
-                Debug.Log(info.Key);
+                //Debug.Log(info.Key);
                 TileType[Convert.ToInt32(info.Key)] = info.Value.mapdetail.ToString();
             }   
         }
@@ -70,7 +70,7 @@ public class mapcreat : MonoBehaviour
             {
                 FileStream fs = new FileStream(filePath, FileMode.Create);
                 //FileStream file = File.Create(Application.dataPath + "/save/" + mapdata.mapname);
-                Debug.Log(json);
+                //Debug.Log(json);
                 fs.Write(data, 0, data.Length);
             //清空缓冲区、关闭流
                 fs.Flush();

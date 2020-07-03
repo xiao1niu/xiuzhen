@@ -151,8 +151,8 @@ public class playerdata : MonoBehaviour
         {
             //int[] arr;
             //string line = "";
-            Debug.Log("max=" + Configinit.Config_Roledata_type[type].roledata_idcount);
-            Debug.Log("i=" + i + "   " + roledata_getid(type, i));
+            //Debug.Log("max=" + Configinit.Config_Roledata_type[type].roledata_idcount);
+            //Debug.Log("i=" + i + "   " + roledata_getid(type, i));
             string line = Configinit.Config_Roledata[roledata_getid(type, i).ToString()].inittype;
             int[] linearr = Array.ConvertAll<string, int>(line.Split(new string[] { "," }, StringSplitOptions.None), int.Parse);
             dataarry[i] = SetNum(linearr);
@@ -304,7 +304,7 @@ public class playerdata : MonoBehaviour
         //int typeid;
         int id = Configinit.Config_Roledata_type[type].roledata_idrange;
         int typeid = id + 1 + i;
-        Debug.Log("typeid:" + typeid);
+        //Debug.Log("typeid:" + typeid);
         return typeid;
     }
 

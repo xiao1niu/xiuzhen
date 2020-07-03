@@ -234,7 +234,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7751152763163337391}
   - component: {fileID: 7458513121984135100}
-  - component: {fileID: 7404574388069661941}
   m_Layer: 0
   m_Name: Toggle1
   m_TagString: Untagged
@@ -308,31 +307,8 @@ MonoBehaviour:
   m_Group: {fileID: 5667516385907989579}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7404574388069661941}
-        m_MethodName: settoggle
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
---- !u!114 &7404574388069661941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5748858828819794757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 092a4b46336a3c04a8a8775356f42736, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6332271822694025332
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ public class page_createworld : MonoBehaviour
         addtoggle("set_worldsize", 1);
         addtoggle("set_resamount", 2);
         addtoggle("set_forestamount", 3);
-        Debug.Log("-----settoggle");
+        //Debug.Log("-----settoggle");
     }
 
     // Update is called once per frame
@@ -37,7 +37,7 @@ public class page_createworld : MonoBehaviour
         GameObject unit_toggle = unit_worldset.transform.Find("table_toggle/Toggle1").gameObject;
         GameObject ToggleX=new GameObject();
         //string[] togglelist = setTogglelist(title);
-        Debug.Log("{---" + togglelist.Length);
+        //Debug.Log("{---" + togglelist.Length);
         for (int num = 1; num < togglelist.Length; num++)
             {
             try
@@ -63,13 +63,19 @@ public class page_createworld : MonoBehaviour
             }
             finally
             {
-                Debug.Log("Toggle" + num + "/Label");
+                //Debug.Log("Toggle" + num + "/Label");
                 //unit_toggle.GetComponent<Text>().text = togglelist[num];
                 ToggleX.transform.Find("Label").gameObject.GetComponent<Text>().text = togglelist[num];
+                Toggle tg = ToggleX.GetComponent<Toggle>(); 
+                tg.onValueChanged.AddListener(delegate (bool isOn) {
+                    this.OnValueChanged(ToggleX);
+                });
+
 
             }
         }
     }
+
     string[] setTogglelist(string title)
     {
         string[] toggle= { "1"};
@@ -85,5 +91,35 @@ public class page_createworld : MonoBehaviour
                 break;
         }
         return toggle;
+    }
+    public void OnValueChanged( GameObject send)
+    {
+        IEnumerable<Toggle> toggleGroup = send.transform.GetComponentInParent< ToggleGroup>().ActiveToggles();
+        string[] name = new string[3];
+        int n = 0;
+        foreach (var toggle in toggleGroup)
+        {
+            if (toggle.isOn == true)
+            {
+                name[n]= toggle.gameObject.name;
+                n++;
+            }
+        }
+
+        switch (name[0])
+        {
+            case "Toggle1":
+                Debug.Log("1");
+                break;
+            case "Toggle2":
+                Debug.Log("2");
+                break;
+            case "Toggle3":
+                Debug.Log("3");
+                break;
+            default:
+                break;
+        }
+
     }
 }

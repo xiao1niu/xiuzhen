@@ -14,11 +14,12 @@ public static class Configinit
         Config_Roledata = SD_Roledata.Roledata_dic(JsonReader.ReadJson<SD_Roledata>("config/roledata").roledata);
         Config_Roledata_type= SD_Roledata.Roledata_type_dic(JsonReader.ReadJson<SD_Roledata>("config/roledata").roledata_type);
         Config_Map = SD_Map.Map_dic(JsonReader.ReadJson<SD_Map>("config/map").map);
+        /*
         foreach (var info in Config_Map)
         {
             Debug.Log(info.Key + " " + info.Value.name);
         }
-        /*
+        
        */
         //的Debug.Log(Config_Roledata[103].roledata_name);
     }

@@ -15,17 +15,6 @@ public class toggle_set : MonoBehaviour
     {
         
     }
-    public void settoggle()
-    {
-        GameObject table_toggle= this.gameObject.transform.parent.gameObject;
+    
 
-        foreach (Transform child in table_toggle.transform)
-        {
-            if(child.name!= this.gameObject.transform.name)
-            {
-                child.transform.          }
-        }
-
-
-    }
 }
