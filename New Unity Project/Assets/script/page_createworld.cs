@@ -68,7 +68,7 @@ public class page_createworld : MonoBehaviour
                 ToggleX.transform.Find("Label").gameObject.GetComponent<Text>().text = togglelist[num];
                 Toggle tg = ToggleX.GetComponent<Toggle>(); 
                 tg.onValueChanged.AddListener(delegate (bool isOn) {
-                    this.OnValueChanged(ToggleX);
+                   // this.OnValueChanged(ToggleX, isOn);
                 });
 
 
@@ -92,11 +92,14 @@ public class page_createworld : MonoBehaviour
         }
         return toggle;
     }
-    public void OnValueChanged( GameObject send)
+    public int OnValueChanged( GameObject send, bool isOn)
     {
+        int chose=0;
         IEnumerable<Toggle> toggleGroup = send.transform.GetComponentInParent< ToggleGroup>().ActiveToggles();
         string[] name = new string[3];
         int n = 0;
+        if (isOn)
+        { 
         foreach (var toggle in toggleGroup)
         {
             if (toggle.isOn == true)
@@ -109,17 +112,22 @@ public class page_createworld : MonoBehaviour
         switch (name[0])
         {
             case "Toggle1":
-                Debug.Log("1");
+                    chose=1;
                 break;
             case "Toggle2":
-                Debug.Log("2");
+                    chose = 2; 
                 break;
             case "Toggle3":
-                Debug.Log("3");
-                break;
+                    chose = 3;
+                    break;
             default:
                 break;
         }
-
+        }
+        return chose;
+    }
+    public void rand_Onclick()
+    {
+        OnValueChanged(table_worldset.transform.FindChild("set_1").gameObject, true);
     }
 }

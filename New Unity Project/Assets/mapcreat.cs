@@ -31,6 +31,16 @@ public class mapcreat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        creatMap();
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+    }
+    void creatMap()
+    {
         TileType = new string[levelH * levelW];
         arrTiles = new Dictionary<string, Tile>();
         TilesName = new List<string>();
@@ -42,21 +52,16 @@ public class mapcreat : MonoBehaviour
             InitMapTilesInfo();
             //Savemap();
         }
-        else {
-            gamedata_Map mapdata =Loadmap();
+        else
+        {
+            gamedata_Map mapdata = Loadmap();
             foreach (var info in mapdata.map)
             {
                 //Debug.Log(info.Key);
                 TileType[Convert.ToInt32(info.Key)] = info.Value.mapdetail.ToString();
-            }   
+            }
         }
         InitData();
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
     void Savemap(gamedata_Map mapdata)
     {

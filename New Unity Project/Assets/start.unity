@@ -4426,7 +4426,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 178.9, y: -411}
+  m_AnchoredPosition: {x: 164.15001, y: -411}
   m_SizeDelta: {x: 163.6, y: 58.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1326596585
@@ -6376,7 +6376,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -139, y: -411}
+  m_AnchoredPosition: {x: -167.05, y: -411}
   m_SizeDelta: {x: 163.6, y: 58.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2063990645
@@ -6388,9 +6388,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2063990643}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f8561d2106da4643ad98f042541f7c5, type: 3}
+  m_Script: {fileID: 11500000, guid: a0f61f9f53ce15744a5d7bb50f7be3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  table_worldset: {fileID: 0}
+  prefab_unit_worldset: {fileID: 0}
 --- !u!114 &2063990646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6435,11 +6437,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2063990645}
-        m_MethodName: suiji
-        m_Mode: 1
+        m_MethodName: rand_Onclick
+        m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: onclick()
