@@ -10,24 +10,37 @@ using UnityEngine.Tilemaps;
 
 public class mapcreat : MonoBehaviour
 {
-    public Tilemap tilemap;//引用的Tilemap，加入脚本后需要将对应tilemap拖进来
-    public Tilemap bgmap;//引用的Tilemap，加入脚本后需要将对应tilemap拖进来
+
     private Dictionary<string, Tile> arrTiles; //地块种类
     private List<string> TilesName;
     string[] TileType;
     string[] TileType_basis;
     //大地图宽高
+    private float _maxHeight = 15;
+    private float _relief = 10f;
+    private float _seedX, _seedZ;
+
+    public Tilemap tilemap;//引用的Tilemap，加入脚本后需要将对应tilemap拖进来
+    public Tilemap bgmap;//引用的Tilemap，加入脚本后需要将对应tilemap拖进来
+    /*
     public int levelW;
     public int levelH;
-    public float _maxHeight = 15;
-    public float _relief = 10f;
-
-    private float _seedX, _seedZ;
     public int city = 10;
     public int village = 30;
     public int mine = 80;
     public int stone = 100;
-    
+    */
+    public class map_data
+    {
+        public int levelW;
+        public int levelH;
+        public int city = 10;
+        public int village = 30;
+        public int mine = 80;
+        public int stone = 100;
+
+    }
+    private map_data map_initset=new map_data();
     // Start is called before the first frame update
     void Start()
     {
@@ -39,13 +52,54 @@ public class mapcreat : MonoBehaviour
     void Update()
     {
     }
+    void setData(int worldsize, int resamount, int forestamount)
+    {
+        switch (worldsize)
+        {
+            case 1:
+                map_initset.levelW = 15;
+                map_initset.levelH = 15;
+                map_initset.city = 1;
+                map_initset.village = 3;
+                break;
+            case 2:
+                map_initset.levelW = 30;
+                map_initset.levelH = 30;
+                map_initset.city = 1;
+                map_initset.village = 5;
+                break;
+            case 3:
+                map_initset.levelW = 50;
+                map_initset.levelH = 50;
+                map_initset.city = 1;
+                map_initset.village = 8;
+                break;
+        }
+        switch (resamount)
+        {
+            case 1:
+                map_initset.mine = 10;
+                map_initset.stone = 20;
+                break;
+            case 2:
+                map_initset.mine = 20;
+                map_initset.stone = 40;
+                break;
+            case 3:
+                map_initset.mine = 30;
+                map_initset.stone = 60;
+                break;
+        }
+
+    }
     void creatMap()
     {
-        TileType = new string[levelH * levelW];
+        TileType = new string[map_initset.levelH * map_initset.levelW];
         arrTiles = new Dictionary<string, Tile>();
         TilesName = new List<string>();
         InitTile();
         InitMapbasisInfo();
+        Debug.Log(map_initset.levelH+"/"+ map_initset.levelW);
         if (!File.Exists(Application.dataPath + "/save/map.txt"))
         {
 
@@ -57,7 +111,7 @@ public class mapcreat : MonoBehaviour
             gamedata_Map mapdata = Loadmap();
             foreach (var info in mapdata.map)
             {
-                //Debug.Log(info.Key);
+                Debug.Log(info.Key);
                 TileType[Convert.ToInt32(info.Key)] = info.Value.mapdetail.ToString();
             }
         }
@@ -112,12 +166,12 @@ public class mapcreat : MonoBehaviour
     }
     void InitData()
     {
-        for (int i = 0; i <levelH; i++)
+        for (int i = 0; i < map_initset.levelH; i++)
         {//根据地面类型TileType初始化tilemap
-            for (int j = 0; j < levelW; j++)
+            for (int j = 0; j < map_initset.levelW; j++)
             {
-                tilemap.SetTile(new Vector3Int(j, i, 0), arrTiles[TileType[i * levelW + j]]);
-                bgmap.SetTile(new Vector3Int(j, i, 0), arrTiles[TileType_basis[i * levelW + j]]);
+                tilemap.SetTile(new Vector3Int(j, i, 0), arrTiles[TileType[i * map_initset.levelW + j]]);
+                bgmap.SetTile(new Vector3Int(j, i, 0), arrTiles[TileType_basis[i * map_initset.levelW + j]]);
 
             }
         }
@@ -129,7 +183,7 @@ public class mapcreat : MonoBehaviour
         _seedZ = UnityEngine.Random.value * 100f;
 
         //初始化地图信息，即每个单位对应的地面类型
-        TileType = new string[levelH * levelW];
+        TileType = new string[map_initset.levelH * map_initset.levelW];
         int check = 0;
         int city_c = 0;
         int village_c = 0;
@@ -140,9 +194,9 @@ public class mapcreat : MonoBehaviour
         mapdata.map = new Dictionary<string, Mapunit>();
         float height_y;
 
-        for (int i = 0; i < levelH; i++)
+        for (int i = 0; i < map_initset.levelH; i++)
         {
-            for (int j = 0; j < levelW; j++)
+            for (int j = 0; j < map_initset.levelW; j++)
             {
 
                 float xSample = (i + _seedX) / _relief;
@@ -170,7 +224,7 @@ public class mapcreat : MonoBehaviour
                         switch (dikuai)
                         {
                             case 102://石山
-                                if (stone_c < stone)
+                                if (stone_c < map_initset.stone)
                                 {
                                     check = 1;
                                     stone_c++;
@@ -181,7 +235,7 @@ public class mapcreat : MonoBehaviour
                                 }
                                 break;
                             case 103://矿山
-                                if (mine_c < mine)
+                                if (mine_c < map_initset.mine)
                                 {
                                     check = 1;
                                     mine_c++;
@@ -192,7 +246,7 @@ public class mapcreat : MonoBehaviour
                                 }
                                 break;
                             case 2101://村庄
-                                if (village_c < village)
+                                if (village_c < map_initset.village)
                                 {
                                     check = 1;
                                     village_c++;
@@ -203,7 +257,7 @@ public class mapcreat : MonoBehaviour
                                 }
                                 break;
                             case 2102://城市
-                                if (city_c < city)
+                                if (city_c < map_initset.city)
                                 {
                                     check = 1;
                                     city_c++;
@@ -226,8 +280,8 @@ public class mapcreat : MonoBehaviour
                 }
                 else if (height_y <= _maxHeight * 0.2f)
                 { dikuai = 101; }
-                TileType[i * levelW + j] = dikuai.ToString();
-                mapdata.map.Add(Convert.ToString(i * levelW + j) , setunit(dikuai, i,j));
+                TileType[i * map_initset.levelW + j] = dikuai.ToString();
+                mapdata.map.Add(Convert.ToString(i * map_initset.levelW + j) , setunit(dikuai, i,j));
                 //Debug.Log("dikuai:" + dikuai);
             }
         }
@@ -236,7 +290,7 @@ public class mapcreat : MonoBehaviour
     Mapunit setunit(int dikuai,int posx, int posy)
     {
         Mapunit unit = new Mapunit();
-        unit.mapid = posx * levelW + posy;
+        unit.mapid = posx * map_initset.levelW + posy;
         unit.mapdetail= dikuai;
         unit.pos =new int[2] {posx, posy};
         return unit;
@@ -245,12 +299,12 @@ public class mapcreat : MonoBehaviour
     void InitMapbasisInfo()
     {
         //初始化地图信息，即每个单位对应的地面类型
-        TileType_basis = new string[levelH * levelW];
-        for (int i = 0; i < levelH; i++)
+        TileType_basis = new string[map_initset.levelH * map_initset.levelW];
+        for (int i = 0; i < map_initset.levelH; i++)
         {
-            for (int j = 0; j < levelW; j++)
+            for (int j = 0; j < map_initset.levelW; j++)
             {
-                TileType_basis[i * levelW + j] = TilesName[0];
+                TileType_basis[i * map_initset.levelW + j] = TilesName[0];
             }
         }
     }

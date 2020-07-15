@@ -128,6 +128,13 @@ public class page_createworld : MonoBehaviour
     }
     public void rand_Onclick()
     {
-        OnValueChanged(table_worldset.transform.FindChild("set_1").gameObject, true);
+        int worldsize;
+        int resamount;
+        int forestamount;
+
+        worldsize = OnValueChanged(table_worldset.transform.FindChild("set_1").gameObject, true);
+        resamount = OnValueChanged(table_worldset.transform.FindChild("set_2").gameObject, true);
+        forestamount = OnValueChanged(table_worldset.transform.FindChild("set_3").gameObject, true);
+
     }
 }
