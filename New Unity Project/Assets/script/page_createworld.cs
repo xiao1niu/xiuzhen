@@ -132,9 +132,13 @@ public class page_createworld : MonoBehaviour
         int resamount;
         int forestamount;
 
-        worldsize = OnValueChanged(table_worldset.transform.FindChild("set_1").gameObject, true);
-        resamount = OnValueChanged(table_worldset.transform.FindChild("set_2").gameObject, true);
-        forestamount = OnValueChanged(table_worldset.transform.FindChild("set_3").gameObject, true);
+        worldsize = OnValueChanged(table_worldset.transform.Find("set_1").gameObject, true);
+        resamount = OnValueChanged(table_worldset.transform.Find("set_2").gameObject, true);
+        forestamount = OnValueChanged(table_worldset.transform.Find("set_3").gameObject, true);
+        mapcreat map0 = new mapcreat();
+        map0.setData(worldsize, resamount, forestamount);
+        creatMap();
+
 
     }
 }

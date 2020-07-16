@@ -20,8 +20,8 @@ public class mapcreat : MonoBehaviour
     private float _relief = 10f;
     private float _seedX, _seedZ;
 
-    public Tilemap tilemap;//引用的Tilemap，加入脚本后需要将对应tilemap拖进来
-    public Tilemap bgmap;//引用的Tilemap，加入脚本后需要将对应tilemap拖进来
+    public Tilemap tile0;//引用的Tilemap，加入脚本后需要将对应tilemap拖进来
+    public Tilemap tile1;//引用的Tilemap，加入脚本后需要将对应tilemap拖进来
     /*
     public int levelW;
     public int levelH;
@@ -38,14 +38,14 @@ public class mapcreat : MonoBehaviour
         public int village = 30;
         public int mine = 80;
         public int stone = 100;
-
     }
     private map_data map_initset=new map_data();
     // Start is called before the first frame update
     void Start()
     {
-        creatMap();
-
+        setData(1,1, 1);
+        creatMap(tile0, tile1);
+        
     }
 
     // Update is called once per frame
@@ -92,9 +92,11 @@ public class mapcreat : MonoBehaviour
         }
 
     }
-    void creatMap()
+    void creatMap(Tilemap tilemap,Tilemap bgmap)//引用的Tilemap，加入脚本后需要将对应tilemap拖进来)
     {
         TileType = new string[map_initset.levelH * map_initset.levelW];
+        Debug.Log("levelH "+map_initset.levelH + ";levelW " + map_initset.levelW);
+
         arrTiles = new Dictionary<string, Tile>();
         TilesName = new List<string>();
         InitTile();
