@@ -92,53 +92,6 @@ public class page_createworld : MonoBehaviour
         }
         return toggle;
     }
-    public int OnValueChanged( GameObject send, bool isOn)
-    {
-        int chose=0;
-        IEnumerable<Toggle> toggleGroup = send.transform.GetComponentInParent< ToggleGroup>().ActiveToggles();
-        string[] name = new string[3];
-        int n = 0;
-        if (isOn)
-        { 
-        foreach (var toggle in toggleGroup)
-        {
-            if (toggle.isOn == true)
-            {
-                name[n]= toggle.gameObject.name;
-                n++;
-            }
-        }
+   
 
-        switch (name[0])
-        {
-            case "Toggle1":
-                    chose=1;
-                break;
-            case "Toggle2":
-                    chose = 2; 
-                break;
-            case "Toggle3":
-                    chose = 3;
-                    break;
-            default:
-                break;
-        }
-        }
-        return chose;
-    }
-    public void rand_Onclick()
-    {
-        int worldsize;
-        int resamount;
-        int forestamount;
-
-        worldsize = OnValueChanged(table_worldset.transform.Find("set_1").gameObject, true);
-        resamount = OnValueChanged(table_worldset.transform.Find("set_2").gameObject, true);
-        forestamount = OnValueChanged(table_worldset.transform.Find("set_3").gameObject, true);
-        mapcreat map0 = new mapcreat();
-        map0.setData(worldsize, resamount, forestamount);
-        creatMap();
-
-
-    }
 }
